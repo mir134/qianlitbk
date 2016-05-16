@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QianliDataModelStoreContainer" CdmEntityContainer="QianliDataEntities">
+    <EntitySetMapping Name="Toutiao">
+      <EntityTypeMapping TypeName="QianliDataModel.Toutiao">
+        <MappingFragment StoreEntitySet="Toutiao">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="detailUrl" ColumnName="detailUrl" />
+          <ScalarProperty Name="isDouble11" ColumnName="isDouble11" />
+          <ScalarProperty Name="form" ColumnName="form" />
+          <ScalarProperty Name="favourCount" ColumnName="favourCount" />
+          <ScalarProperty Name="viewNum" ColumnName="viewNum" />
+          <ScalarProperty Name="showDate" ColumnName="showDate" />
+          <ScalarProperty Name="feedId" ColumnName="feedId" />
+          <ScalarProperty Name="showWeight" ColumnName="showWeight" />
+          <ScalarProperty Name="publishId" ColumnName="publishId" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="bizSourceName" ColumnName="bizSourceName" />
+          <ScalarProperty Name="picList" ColumnName="picList" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="columnId" ColumnName="columnId" />
+          <ScalarProperty Name="subColumn" ColumnName="subColumn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

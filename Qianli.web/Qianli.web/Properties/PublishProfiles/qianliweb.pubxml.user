@@ -1,0 +1,529 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+您 Web 项目的发布/打包进程将使用此文件。您可以通过编辑此 MSBuild 文件
+来自定义该进程的行为。若要了解与此相关的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>F:\hsz\qianliwebtk\Qianli.web\WebSite</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="App_Data/QianliData.mdf">
+      <publishTime>05/11/2016 12:01:50</publishTime>
+    </File>
+    <File Include="App_Data/QianliData_log.ldf">
+      <publishTime>05/11/2016 12:01:50</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/HelpPage.css">
+      <publishTime>10/21/2015 17:01:49</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/Api.cshtml">
+      <publishTime>10/21/2015 17:01:48</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/ApiGroup.cshtml">
+      <publishTime>10/21/2015 17:01:48</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/HelpPageApiModel.cshtml">
+      <publishTime>10/21/2015 17:01:48</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/ImageSample.cshtml">
+      <publishTime>10/21/2015 17:01:48</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/InvalidSample.cshtml">
+      <publishTime>10/21/2015 17:01:48</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/Parameters.cshtml">
+      <publishTime>10/21/2015 17:01:48</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/Samples.cshtml">
+      <publishTime>10/21/2015 17:01:48</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/TextSample.cshtml">
+      <publishTime>10/21/2015 17:01:48</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/Index.cshtml">
+      <publishTime>10/21/2015 17:01:48</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Shared/_Layout.cshtml">
+      <publishTime>10/21/2015 17:01:48</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Web.config">
+      <publishTime>10/21/2015 17:01:48</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/_ViewStart.cshtml">
+      <publishTime>10/21/2015 17:01:41</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>10/21/2015 17:01:49</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>06/28/2012 13:56:42</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>04/22/2016 16:38:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>10/21/2015 17:01:47</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>10/21/2015 17:01:45</publishTime>
+    </File>
+    <File Include="bin/NSoup.dll">
+      <publishTime>04/22/2016 09:13:16</publishTime>
+    </File>
+    <File Include="bin/Qianli.web.dll">
+      <publishTime>05/04/2016 11:47:59</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>10/21/2015 17:01:47</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>10/21/2015 17:01:47</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>10/21/2015 17:01:48</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>10/21/2015 17:01:48</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>10/21/2015 17:01:47</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>10/21/2015 17:01:47</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>10/21/2015 17:01:46</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>10/21/2015 17:01:47</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>10/21/2015 17:01:47</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>10/21/2015 17:01:47</publishTime>
+    </File>
+    <File Include="bin/TopSdk.dll">
+      <publishTime>10/17/2015 14:13:26</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>10/21/2015 17:01:49</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/EntityFramework.resources.dll">
+      <publishTime>04/22/2016 16:38:16</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Net.Http.Formatting.resources.dll">
+      <publishTime>10/21/2015 17:01:50</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Helpers.resources.dll">
+      <publishTime>10/21/2015 17:01:50</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.resources.dll">
+      <publishTime>10/21/2015 17:01:50</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.WebHost.resources.dll">
+      <publishTime>10/21/2015 17:01:50</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Mvc.resources.dll">
+      <publishTime>10/21/2015 17:01:50</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Optimization.resources.dll">
+      <publishTime>10/21/2015 17:01:50</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Razor.resources.dll">
+      <publishTime>10/21/2015 17:01:49</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Deployment.resources.dll">
+      <publishTime>10/21/2015 17:01:50</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Razor.resources.dll">
+      <publishTime>10/21/2015 17:01:50</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.resources.dll">
+      <publishTime>10/21/2015 17:01:50</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>10/21/2015 17:01:44</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>10/21/2015 17:01:44</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>10/21/2015 17:01:41</publishTime>
+    </File>
+    <File Include="Content/toutiao/css/a.css">
+      <publishTime>04/21/2016 10:09:16</publishTime>
+    </File>
+    <File Include="Content/toutiao/css/d.css">
+      <publishTime>04/21/2016 10:08:39</publishTime>
+    </File>
+    <File Include="Content/toutiao/css/global-min.css">
+      <publishTime>04/21/2016 10:09:49</publishTime>
+    </File>
+    <File Include="Content/toutiao/css/index-min.css">
+      <publishTime>04/21/2016 10:11:04</publishTime>
+    </File>
+    <File Include="Content/toutiao/css/index.css">
+      <publishTime>04/21/2016 10:10:52</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/1-16010Z95455541.png">
+      <publishTime>04/20/2016 16:45:21</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/1-16031Q1095a53.png">
+      <publishTime>04/20/2016 16:45:19</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/1-16031Q92T3346.jpg">
+      <publishTime>04/20/2016 16:45:13</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/1-160322211149253.png">
+      <publishTime>04/20/2016 16:45:13</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/1-160323210U2540-lp.jpg">
+      <publishTime>04/20/2016 16:45:10</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/1-16041914295E52.jpg">
+      <publishTime>04/20/2016 16:45:11</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/14010911a-7.png">
+      <publishTime>04/20/2016 16:45:12</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/1_0419135R19344.jpg">
+      <publishTime>04/20/2016 16:45:11</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/336-280.gif">
+      <publishTime>04/20/2016 16:45:27</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/qianlihz.png">
+      <publishTime>04/27/2016 11:22:29</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/qianliwx.png">
+      <publishTime>04/27/2016 11:47:26</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/qianliwx2.png">
+      <publishTime>04/27/2016 11:47:14</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/T18X1SFzXbXXa3oiYh-51-46.png">
+      <publishTime>04/20/2016 16:45:37</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/T1b1m3XkVpXXXXXXXX-32-32.gif">
+      <publishTime>04/20/2016 16:45:33</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/T1cKm3XkRpXXXXXXXX-48-48.gif">
+      <publishTime>04/20/2016 16:45:34</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/T1g2x8FEBcXXc.b8bx-148-124.png">
+      <publishTime>04/20/2016 16:45:37</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/T1HcvHXd4nXXb6ROYh-48-48.gif">
+      <publishTime>04/20/2016 16:45:37</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/T1hOy5XhNnXXXXXXXX-9-14.gif">
+      <publishTime>04/20/2016 16:45:33</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/T1hXh9FutkXXaXzF.Q-123-140.png">
+      <publishTime>04/20/2016 16:45:37</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/T1KxCMXeNjXXXXXXXX-14-14.gif">
+      <publishTime>04/20/2016 16:45:33</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/T1lni5XhXXXXXXXXXX-9-14.gif">
+      <publishTime>04/20/2016 16:45:33</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/T1oykcFidbXXXcAos.-13-5.gif">
+      <publishTime>04/20/2016 16:45:37</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/T1uJd2FD8bXXbA0cQR-80-170.png">
+      <publishTime>04/20/2016 16:45:37</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/T1UmznFCXcXXbA0cQR-80-170.png">
+      <publishTime>04/20/2016 16:45:37</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/T1wPnQFIhXXXaHNz_X-16-16.gif">
+      <publishTime>04/20/2016 16:45:37</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/T1yuJ2FtRbXXcqIPT5-50-100.png">
+      <publishTime>04/20/2016 16:45:37</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB13.oLJpXXXXXmXVXXXXXXXXXX_!!0-item_pic.jpg">
+      <publishTime>04/20/2016 16:37:37</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB17T7eJVXXXXXLXFXXXXXXXXXX_!!0-item_pic.jpg">
+      <publishTime>04/20/2016 16:38:14</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB18TOQIpXXXXXDXFXXvmHRPpXX-158-281.png">
+      <publishTime>04/20/2016 16:45:34</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB19TgIHpXXXXbRXVXX_AQW0XXX-529-200.png">
+      <publishTime>04/20/2016 16:45:33</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB1ANTwJVXXXXcdXpXXXXXXXXXX_!!0-item_pic.jpg">
+      <publishTime>04/20/2016 16:37:32</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB1BWt1KXXXXXc9XXXXXXXXXXXX_!!0-item_pic.jpg">
+      <publishTime>04/20/2016 16:37:35</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB1d0jKIpXXXXaSXXXXvYN.IXXX-250-186.jpg">
+      <publishTime>04/20/2016 16:45:28</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB1dnxTIpXXXXaPXXXXcA4oFFXX-23-20.gif">
+      <publishTime>04/20/2016 16:45:34</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB1dWP5KpXXXXX0XVXXXXXXXXXX_!!0-item_pic.jpg">
+      <publishTime>04/20/2016 16:37:17</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB1FgbdKXXXXXc6XVXXXXXXXXXX_!!0-item_pic.jpg">
+      <publishTime>04/20/2016 16:37:39</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB1GvPvJFXXXXb5XpXXXXXXXXXX_!!0-item_pic.jpg">
+      <publishTime>04/20/2016 16:38:10</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB1H38JIXXXXXbDXXXXWgA52VXX-748-264.png">
+      <publishTime>04/20/2016 16:38:15</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB1l_uzIpXXXXbgaXXXwjutOVXX-360-95.png">
+      <publishTime>04/20/2016 16:45:26</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB1NC8LIXXXXXcWXXXXhoVtWXXX-205-206.png">
+      <publishTime>04/27/2016 11:47:26</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB1NgFtIFXXXXXoXVXXvYN.IXXX-250-186.jpg">
+      <publishTime>04/20/2016 16:45:32</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB1NPxkIFXXXXctXVXXvYN.IXXX-250-186.jpg">
+      <publishTime>04/20/2016 16:45:29</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB1PHnFIXXXXXXVXVXXmT2.FFXX-25-21.gif">
+      <publishTime>04/20/2016 16:45:34</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB1PvcxIpXXXXaUXpXXvYN.IXXX-250-186.jpg">
+      <publishTime>04/20/2016 16:38:25</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB1sgWgJVXXXXa_XVXXXXXXXXXX_!!0-item_pic.jpg">
+      <publishTime>04/20/2016 16:37:50</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB1vflvJFXXXXboXVXXXXXXXXXX_!!0-item_pic.jpg">
+      <publishTime>04/20/2016 16:37:41</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB1wb7FJFXXXXcGXFXXXXXXXXXX_!!0-item_pic.jpg">
+      <publishTime>04/20/2016 16:37:43</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB1zBENHpXXXXbUXXXXM6a0UXXX-1058-400.png">
+      <publishTime>04/20/2016 16:45:33</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB21CJidFXXXXc2XpXXXXXXXXXX_!!1903279640-0-dgshop.jpg">
+      <publishTime>04/20/2016 16:38:27</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB27KeZdpXXXXcsXXXXXXXXXXXX_!!1847446854-0-dgshop.jpg">
+      <publishTime>04/20/2016 16:45:31</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB282fXnpXXXXXGXFXXXXXXXXXX_!!0-dgshop.jpg">
+      <publishTime>04/20/2016 16:45:10</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB28NVYjXXXXXa0XXXXXXXXXXXX_!!2629227094-0-dgshop.jpg">
+      <publishTime>04/20/2016 16:45:22</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB2eQAQcFXXXXabXXXXXXXXXXXX_!!2082508057-0-dgshop.jpg">
+      <publishTime>04/20/2016 16:38:33</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB2EyGJhXXXXXbaXpXXXXXXXXXX_!!1765834423-0-dgshop.jpg">
+      <publishTime>04/20/2016 16:37:36</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB2iOFgdpXXXXX5XpXXXXXXXXXX_!!688719369-0-dgshop.jpg">
+      <publishTime>04/20/2016 16:45:30</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB2jVBndFXXXXcTXXXXXXXXXXXX_!!1582136559-0-dgshop.jpg">
+      <publishTime>04/20/2016 16:45:29</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB2ksaldFXXXXXCXXXXXXXXXXXX_!!2415696462-0-dgshop.jpg">
+      <publishTime>04/20/2016 16:38:24</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB2lHvEnpXXXXXkXpXXXXXXXXXX_!!0-dgshop.jpg">
+      <publishTime>04/20/2016 16:45:08</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB2lUDXhXXXXXXgXXXXXXXXXXXX_!!1765834423-0-dgshop.jpg">
+      <publishTime>04/20/2016 16:37:46</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB2m2SodFXXXXaqXXXXXXXXXXXX_!!2118042978-0-dgshop.jpg">
+      <publishTime>04/20/2016 16:38:31</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB2MCy1hXXXXXaQXXXXXXXXXXXX_!!1765834423-0-dgshop.jpg">
+      <publishTime>04/20/2016 16:37:38</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB2NpDidpXXXXcdXpXXXXXXXXXX_!!60401382-0-dgshop.jpg">
+      <publishTime>04/20/2016 16:38:19</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB2oh.WcpXXXXbcXXXXXXXXXXXX_!!2138516569.jpg_430x430q9">
+      <publishTime>04/20/2016 16:45:09</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB2pp8odpXXXXbaXXXXXXXXXXXX_!!2110999741-0-dgshop.jpg">
+      <publishTime>04/20/2016 16:45:30</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB2rI9VdXXXXXcwXXXXXXXXXXXX_!!2428668206-0-dgshop.jpg">
+      <publishTime>04/20/2016 16:38:22</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB2sj4xdFXXXXa3XpXXXXXXXXXX_!!352545148.jpg">
+      <publishTime>04/20/2016 16:45:28</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB2tDfSdpXXXXc2XXXXXXXXXXXX_!!2097066695-0-dgshop.jpg">
+      <publishTime>04/20/2016 16:45:32</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB2TqMxnpXXXXbkXXXXXXXXXXXX_!!0-dgshop.jpg">
+      <publishTime>04/20/2016 16:45:08</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB2ttTRiVXXXXXyXXXXXXXXXXXX_!!2549095325-0-dgshop.jpg">
+      <publishTime>04/20/2016 16:45:23</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB2uJnldpXXXXbiXpXXXXXXXXXX_!!2428982207-0-dgshop.jpg">
+      <publishTime>04/20/2016 16:45:32</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB2uU_GiVXXXXaYXXXXXXXXXXXX_!!2549095325-0-dgshop.jpg">
+      <publishTime>04/20/2016 16:45:25</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB2X51.hXXXXXXwXXXXXXXXXXXX_!!1765834423-0-dgshop.jpg">
+      <publishTime>04/20/2016 16:38:14</publishTime>
+    </File>
+    <File Include="Content/toutiao/images/TB2YEVydFXXXXbjXpXXXXXXXXXX_!!781326872-0-dgshop.jpg">
+      <publishTime>04/20/2016 16:38:24</publishTime>
+    </File>
+    <File Include="Content/toutiao/js/aplus_v2.js">
+      <publishTime>04/20/2016 16:38:40</publishTime>
+    </File>
+    <File Include="Content/toutiao/js/config.js">
+      <publishTime>04/20/2016 16:38:40</publishTime>
+    </File>
+    <File Include="Content/toutiao/js/index.js">
+      <publishTime>05/03/2016 18:40:19</publishTime>
+    </File>
+    <File Include="Content/toutiao/js/index2.js">
+      <publishTime>04/20/2016 16:38:40</publishTime>
+    </File>
+    <File Include="Content/toutiao/other/font_1404888168_2057645.eot">
+      <publishTime>04/20/2016 16:45:34</publishTime>
+    </File>
+    <File Include="Content/toutiao/other/font_1404888168_2057645.svg#uxiconfont">
+      <publishTime>04/20/2016 16:45:34</publishTime>
+    </File>
+    <File Include="Content/toutiao/other/font_1404888168_2057645.ttf">
+      <publishTime>04/20/2016 16:45:34</publishTime>
+    </File>
+    <File Include="Content/toutiao/other/font_1404888168_2057645.woff">
+      <publishTime>04/20/2016 16:45:34</publishTime>
+    </File>
+    <File Include="Content/toutiao/other/iconfont.eot">
+      <publishTime>04/20/2016 16:45:36</publishTime>
+    </File>
+    <File Include="Content/toutiao/other/iconfont.svg#uxiconfont">
+      <publishTime>04/20/2016 16:45:36</publishTime>
+    </File>
+    <File Include="Content/toutiao/other/iconfont.ttf">
+      <publishTime>04/20/2016 16:45:36</publishTime>
+    </File>
+    <File Include="Content/toutiao/other/iconfont.woff">
+      <publishTime>04/20/2016 16:45:36</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>10/21/2015 17:01:41</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.eot">
+      <publishTime>10/21/2015 17:01:44</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.svg">
+      <publishTime>10/21/2015 17:01:44</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>10/21/2015 17:01:44</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff">
+      <publishTime>10/21/2015 17:01:44</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>10/21/2015 17:01:41</publishTime>
+    </File>
+    <File Include="Models/v/Toutiao.cs">
+      <publishTime>05/12/2016 15:00:06</publishTime>
+    </File>
+    <File Include="Models/v/ToutiaoModel.Context.cs">
+      <publishTime>05/12/2016 15:03:09</publishTime>
+    </File>
+    <File Include="Models/v/ToutiaoModel.Context.tt">
+      <publishTime>05/12/2016 14:59:53</publishTime>
+    </File>
+    <File Include="Models/v/ToutiaoModel.cs">
+      <publishTime>05/12/2016 15:03:12</publishTime>
+    </File>
+    <File Include="Models/v/ToutiaoModel.Designer.cs">
+      <publishTime>05/12/2016 15:03:12</publishTime>
+    </File>
+    <File Include="Models/v/ToutiaoModel.edmx">
+      <publishTime>05/12/2016 15:03:06</publishTime>
+    </File>
+    <File Include="Models/v/ToutiaoModel.edmx.diagram">
+      <publishTime>05/12/2016 15:03:06</publishTime>
+    </File>
+    <File Include="Models/v/ToutiaoModel.tt">
+      <publishTime>05/12/2016 14:59:54</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>04/25/2016 20:53:55</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>10/21/2015 17:01:44</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>10/21/2015 17:01:44</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.js">
+      <publishTime>10/21/2015 17:01:45</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.js">
+      <publishTime>10/21/2015 17:01:45</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.map">
+      <publishTime>10/21/2015 17:01:45</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.6.2.js">
+      <publishTime>10/21/2015 17:01:49</publishTime>
+    </File>
+    <File Include="Scripts/respond.js">
+      <publishTime>10/21/2015 17:01:49</publishTime>
+    </File>
+    <File Include="Scripts/respond.min.js">
+      <publishTime>10/21/2015 17:01:49</publishTime>
+    </File>
+    <File Include="Scripts/_references.js">
+      <publishTime>04/27/2016 11:58:00</publishTime>
+    </File>
+    <File Include="Views/hg/goods.cshtml">
+      <publishTime>05/03/2016 16:37:46</publishTime>
+    </File>
+    <File Include="Views/hg/Index.cshtml">
+      <publishTime>05/03/2016 17:04:36</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>10/21/2015 17:01:41</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>04/27/2016 11:12:03</publishTime>
+    </File>
+    <File Include="Views/Shared/_mallLayout.cshtml">
+      <publishTime>05/03/2016 19:32:34</publishTime>
+    </File>
+    <File Include="Views/v/i.cshtml">
+      <publishTime>05/04/2016 11:40:18</publishTime>
+    </File>
+    <File Include="Views/v/ip.cshtml">
+      <publishTime>05/04/2016 11:42:33</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>10/21/2015 17:01:41</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>10/21/2015 17:01:41</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>04/27/2016 10:50:34</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QianliDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Toutiao">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="detailUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="isDouble11" Type="Boolean" />
+    <Property Name="form" Type="Int32" />
+    <Property Name="favourCount" Type="Int32" />
+    <Property Name="viewNum" Type="Int32" />
+    <Property Name="showDate" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="feedId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="showWeight" Type="Int32" />
+    <Property Name="publishId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="bizSourceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="picList" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="columnId" Type="Int32" />
+    <Property Name="subColumn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="QianliDataEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Toutiao" EntityType="Self.Toutiao" />
+  </EntityContainer>
+</Schema>

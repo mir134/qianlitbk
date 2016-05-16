@@ -1,0 +1,139 @@
+﻿@{   
+    Layout = "~/Views/Shared/_mallLayout.cshtml";
+    ViewBag.Title = "网购VIP头条-千里V商城";
+                    //<img src='@Html.Raw(@NTbkItem["picList"][0].ToString())' /> 
+    
+}
+
+    <!-- 左栏 -->
+    <div class="content">
+        <div id="J_List">
+            <div id="J_MainList" data-spm="1998565035">
+
+                @foreach (var NTbkItem in ViewData["JArray"] as List<Qianli.web.Models.v.Toutiao>)
+                {
+                    if (NTbkItem.detailUrl.IndexOf("headline.taobao") > 0 || NTbkItem.detailUrl.IndexOf("uz.taobao") > 0)
+                    { 
+               
+                <div>
+                    <a class="item item-style-cell" href="@Html.Raw(@NTbkItem.detailUrl.Replace("http://headline.taobao.com/feed/feedDetail.htm?id=", "/v/ip/").Replace("http://uz.taobao.com/detail/", "/v/ip/"))?&publishId=@Html.Raw(@NTbkItem.publishId)&columnid=@Html.Raw(@ViewData["columnid"].ToString())@Html.Raw(@ViewData["subColumn"].ToString())">
+
+                        <div class="item-pic"> <img src='@Html.Raw(@NTbkItem.picList)' /> </div>
+
+                        <div class="item-info">
+
+                            <div class="item-title">@NTbkItem.name</div>
+
+                            <div class="item-desc">@NTbkItem.description</div>
+                        </div>
+
+                        <div class="item-status">
+
+                            <div class="item-view">
+
+                                <div class="item-status-text">@NTbkItem.viewNum.ToString()</div>
+
+                            </div>
+
+                            <div class="item-up">
+
+                                <div class="item-status-text">@NTbkItem.favourCount.ToString()</div>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+                </div>
+                    }
+                }
+                
+
+            </div>
+
+        </div>
+
+        <div id="J_Loading" class="loading none"></div>
+
+    </div>
+
+    <!-- 右边栏 -->
+
+    <div class="sidebar">
+
+        <div class="qrcode">
+
+            <div class="qrcode-pic"> <img title="千里技术微信" src="/Content/toutiao/images/qianliwx.png"> </div>
+
+            <div class="qrcode-info">
+
+                <div class="qrcode-title">千里头条 时刻新鲜</div>
+
+                <div class="qrcode-desc">扫码查看更多头条快讯</div>
+
+            </div>
+
+            <div class="qrcode-line"></div>
+
+        </div>
+
+        <div data-spm="1998565036"> <a href="http://v.qianliweb.com/v/" style="border: none;" target="_blank" class="recruit"> <img title="千里技术邮箱" src="/Content/toutiao/images/qianlihz.png"> </a> </div><br>
+
+        <div><a href="#"><img src="/Content/toutiao/images/336-280.gif"></a></div>
+
+        <div class="hot">
+
+            <div class="hot-title">
+
+                <div class="hot-title-text">本周热门</div>
+
+            </div>
+
+            <div class="hot-list" data-spm="1998565037">
+
+             @foreach (var t in ViewData.Model)
+             {
+                  <a class="item" href="@Html.Raw(@t.detailUrl.Replace("http://headline.taobao.com/feed/feedDetail.htm?id=", "/v/ip/").Replace("http://uz.taobao.com/detail/", "/v/ip/"))?&publishId=@Html.Raw(@t.publishId)&columnid=@t.columnId">
+
+        <div class="item-rank rank-second"></div>
+
+        <div class="item-pic"><img src='@Html.Raw(@t.picList.ToString())' /></div>
+
+        <div class="item-info">
+
+            <div class="item-title">@t.name</div>
+
+            <div class="item-desc">@t.description</div>
+
+        </div>
+
+        <div class="item-status">
+
+            <div class="item-view">
+
+                <div class="item-status-text">@t.viewNum.ToString()</div>
+
+            </div>
+
+            <div class="item-up">
+
+                <div class="item-status-text">@t.favourCount.ToString() </div>
+
+            </div>
+
+        </div>
+
+    </a>
+
+             }
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+

@@ -1,0 +1,145 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+html{background-color:#eee}
+body{font:12px/1.5 "Microsoft Yahei",tahoma,arial,"Hiragino Sans GB";-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.footer,.main,.site-nav .site-nav-bd{width:1130px}
+.main{margin:20px auto 0;padding-bottom:100px;clear:none!important;*zoom:1}
+.main:after{content:"";clear:both;display:block!important;height:0}
+.content{float:left;width:750px;margin-right:20px}
+.sidebar{overflow:hidden;*zoom:1}
+img{width:100%}
+a,ins{text-decoration:none}
+.none{display:none}
+.app-nav{position:relative;width:100%;min-width:1130px;background:#da0d15;z-index:99}
+.app-nav .nav-container{height:56px;width:1130px;margin:0 auto;clear:none!important;*zoom:1}
+.app-nav .nav-container:after{content:"";clear:both;display:block!important;height:0}
+.app-nav .nav-logo{float:left;display:block;height:40px;width:180px;margin-top:8px;background:url(http://img.alicdn.com/tps/i1/TB18TOQIpXXXXXDXFXXvmHRPpXX-158-281.png) -10px 0 no-repeat;*zoom:1}
+.app-nav .nav-items{float:right;height:100%}
+.app-nav .nav-item{float:left;position:relative;display:block;height:38px;margin:0 20px;padding-top:14px;border-bottom:4px solid #da0d15;color:#fff;font-size:18px;font-weight:500;text-align:center;text-decoration:none;*zoom:1}
+.app-nav .nav-item.nav-active,.app-nav .nav-item:hover{font-weight:700}
+.app-nav .nav-item.nav-active{border-color:#fff}
+.app-nav .nav-item .nav-item-hot,.app-nav .nav-item .nav-item-new{position:absolute;top:10px;left:103%;height:21px;width:25px}
+.app-nav .nav-item .nav-item-new{background:url(http://img.alicdn.com/tps/i4/TB1PHnFIXXXXXXVXVXXmT2.FFXX-25-21.gif) no-repeat}
+.app-nav .nav-item .nav-item-hot{background:url(http://img.alicdn.com/tps/i3/TB1dnxTIpXXXXaPXXXXcA4oFFXX-23-20.gif) no-repeat}
+.sidebar{color:#333}
+.sidebar .qrcode{padding:20px 0;border:1px solid #ddd;background:#fff}
+.sidebar .qrcode .qrcode-pic{height:200px;width:200px;margin:0 auto 6px}
+.sidebar .qrcode .qrcode-info{position:relative;width:210px;margin:0 auto 6px;text-align:center;background:#fff;z-index:5}
+.sidebar .qrcode .qrcode-title{font-size:24px}
+.sidebar .qrcode .qrcode-desc{font-size:16px;line-height:1}
+.sidebar .qrcode .qrcode-line{display:none}
+.sidebar .recruit{display:block;height:95px;margin-top:20px}
+.sidebar .hot{margin-top:16px}
+.sidebar .hot .hot-title{height:36px;line-height:36px;margin-left:1px;font-size:24px;background:url(http://img.alicdn.com/tps/i1/TB18TOQIpXXXXXDXFXXvmHRPpXX-158-281.png) 0 -121px no-repeat}
+.sidebar .hot .hot-title .hot-title-text{margin-left:38px}
+.sidebar .hot .hot-title.hot-title-up{background:0 0}
+.sidebar .hot .hot-title.hot-title-up .hot-title-text{margin-left:0}
+.sidebar .hot .hot-list{margin-top:10px;border-top:2px solid #da0d15}
+.sidebar .item{position:relative;display:block;padding:20px;border:1px solid #ddd;border-top:0;background:#fff;text-decoration:none;*cursor:pointer;clear:none!important;*zoom:1}
+.sidebar .item:after{content:"";clear:both;display:block!important;height:0}
+.sidebar .item:visited .item-title{color:#666}
+.sidebar .item:visited .item-desc{color:#999}
+.sidebar .item .item-rank{position:absolute;top:-1px;left:-1px;height:24px;width:24px;line-height:24px;color:#fff;font-style:italic;background:#da0d15;text-align:center}
+.sidebar .item .item-rank.rank-second{background:#ff4b52}
+.sidebar .item .item-rank.rank-third{background:#ff6369}
+.sidebar .item .item-pic{float:left;height:85px;width:115px;margin-right:10px;overflow:hidden}
+.sidebar .item .item-info{overflow:hidden;*zoom:1}
+.sidebar .item .item-title{margin-bottom:6px;line-height:1;font-size:15px;color:#333;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
+.sidebar .item .item-title:hover{color:#da0d15}
+.sidebar .item .item-desc{height:36px;line-height:18px;color:#666;font-size:13px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.sidebar .item .item-status{position:absolute;right:20px;bottom:18px;color:#999;clear:none!important;*zoom:1}
+.sidebar .item .item-status:after{content:"";clear:both;display:block!important;height:0}
+.sidebar .item .item-status .item-status-text{height:18px;line-height:18px;margin-left:24px;background:#fff}
+.sidebar .item .item-up,.sidebar .item .item-view{float:left;margin-left:15px}
+.sidebar .item .item-view{background:url(http://img.alicdn.com/tps/i1/TB18TOQIpXXXXXDXFXXvmHRPpXX-158-281.png) -60px -46px no-repeat}
+.sidebar .item .item-up{background:url(http://img.alicdn.com/tps/i1/TB18TOQIpXXXXXDXFXXvmHRPpXX-158-281.png) -85px -46px no-repeat}
+.content{border:1px solid #ddd;color:#333;font-size:16px}
+.content .bread{padding:20px;border-bottom:1px solid #ddd;background:#fff}
+.content .bread a{color:#da0d15}
+.content .detail{padding:20px;background:#fff}
+.content .detail .detail-title{font-size:24px}
+.content .detail .detail-time{margin:10px 0 20px;color:#999;font-weight:100}
+.content .detail p{margin:10px 0;line-height:1.875;color:#414141}
+.content .item{position:relative;display:block;width:470px;margin:10px 0;padding:20px;background:#f7f7f7;text-decoration:none;*cursor:pointer;clear:none!important;*zoom:1}
+.content .item:after{content:"";clear:both;display:block!important;height:0}
+.content .item:visited .item-title{color:#818181}
+.content .item:hover{background:#eee}
+.content .item .item-pic{float:left;height:140px;width:140px;margin-right:20px;overflow:hidden}
+.content .item .item-info{position:relative;height:140px;overflow:hidden;*zoom:1}
+.content .item .item-title{line-height:1.5;color:#333;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.content .item .item-price{position:absolute;left:0;bottom:5px;font-family:HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",arial}
+.content .item .price-new{color:#f50}
+.content .item .price-new strong{font-size:24px;font-weight:400}
+.content .item .price-old{margin-left:10px;color:#999}
+.content .item .item-btn{position:absolute;right:0;bottom:5px;height:30px;width:100px;line-height:30px;border:1px solid #da0d15;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;color:#da0d15;text-align:center}
+.content .link{padding:30px 0 20px;text-align:center}
+.content .link a{color:#da0d15}
+.content .link a span{background:url(http://img.alicdn.com/tps/i1/TB18TOQIpXXXXXDXFXXvmHRPpXX-158-281.png) 5px -198px no-repeat}
+.content .guide{height:262px}
+.now-have span {
+    padding: 2px 10px;
+    background: #ff5842;
+    color: #fff;
+    float: right;
+}
+.content .detail a {
+	text-decoration:none
+}
+.content .detail .item {
+	border:1px solid #eee;
+	margin:20px 0;
+	width:335px;
+	height:138px;
+	margin-left:10px;
+	overflow:hidden
+}
+.content .detail .item:hover {
+	-webkit-box-shadow:0 0 20px 1px #e8e8e8;
+	-moz-box-shadow:0 0 20px 1px #e8e8e8;
+	box-shadow:0 0 20px 1px #e8e8e8;
+	-webkit-transition:all .35s linear;
+	-moz-transition:all .35s linear;
+	-ms-transition:all .35s linear;
+	-o-transition:all .35s linear;
+	border:1px solid #333\9
+}
+.content .detail .item:hover .now-have span {
+	background:#eb513d\9
+}
+.content .detail .item img {
+	width:100px;
+	height:100px;
+	padding:0;
+	float:left
+}
+.content .detail .item p {
+	overflow:hidden;
+	margin-left:20px
+}
+.content .detail .item a {
+	display:block;
+	color:#000;
+	text-decoration:none;
+	padding:20px
+}
+.content .detail .item .item-title {
+	overflow:hidden;
+	margin-top:8px;
+	margin-left:120px;
+	font-size:14px;
+	height:40px;
+	font-weight:400;
+	color:#333;
+	text-align:justify
+}
+.content .detail .item .price {
+	float:left;
+	font-size:18px!important;
+	color:#ff5842!important
+}
+
+
+
+
+
