@@ -15,7 +15,10 @@
     int i = 1;
 
     string iurl = "<a href='/v/i/'> 最新头条  </a>";
-    string columnId = ViewData.Model.columnId.ToString();
+    string columnId="0";
+    if(ViewData.Model.columnId!=null){
+        columnId = ViewData.Model.columnId.ToString();
+    }
     switch (columnId)
     {
         case "28":

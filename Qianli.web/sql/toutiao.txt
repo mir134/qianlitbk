@@ -1,0 +1,21 @@
+CREATE TABLE [dbo].[Toutiao] (
+    [Id]            INT            IDENTITY (1, 1) NOT NULL,
+    [detailUrl]     NVARCHAR (250) NULL,
+    [isDouble11]    BIT            DEFAULT ((0)) NULL,
+    [form]          INT            DEFAULT ((0)) NULL,
+    [favourCount]   INT            DEFAULT ((0)) NULL,
+    [viewNum]       INT            DEFAULT ((0)) NULL,
+    [showDate]      NVARCHAR (20)  NULL,
+    [feedId]        NVARCHAR (50)  NOT NULL,
+    [showWeight]    INT            DEFAULT ((0)) NULL,
+    [publishId]     NVARCHAR (50)  NULL,
+    [description]   NVARCHAR (250) NULL,
+    [name]          NVARCHAR (150) NOT NULL,
+    [bizSourceName] NVARCHAR (50)  NULL,
+    [picList]       NVARCHAR (250) NULL,
+    [content]       NVARCHAR (MAX) NULL,
+    [columnId]      INT            DEFAULT ((0)) NULL,
+    [subColumn]     NVARCHAR (50)  NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+

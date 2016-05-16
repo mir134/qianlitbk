@@ -70,15 +70,30 @@ namespace Qianli.web.Controllers
             {
                 j["picList"] = j["picList"][0].ToString();
                 Toutiao p = help.ParseFromJson<Toutiao>(j.ToString());
+                p.columnId = Convert.ToInt32(id);
                 if (p.detailUrl.IndexOf("uz.taobao") > 0)
                 {
                     string feedid = help.GetValueAnd("/detail/", "/", p.detailUrl);
                     p.feedId = feedid;
                 }
-                if (_db.Toutiao.FirstOrDefault(t => t.feedId == p.feedId) == null) {
-                   // TryUpdateModel(p);
-                    p.isDouble11 = false;                    
+                Toutiao toutiao = _db.Toutiao.FirstOrDefault(t => t.feedId == p.feedId);
+                if (toutiao== null)
+                {
+                    // TryUpdateModel(p);
+                    p.isDouble11 = false;
                     _db.Toutiao.Add(p);
+                }
+                else {
+                    if ((toutiao.columnId == 0) && (id != "0"))
+                    {
+                        toutiao.columnId = Convert.ToInt32(id);
+                        TryUpdateModel(toutiao, new string[] { "columnId"});
+                        if (ModelState.IsValid)
+                        {
+                            _db.Entry(toutiao).State = EntityState.Modified;                            
+                        }
+                    }                 
+                
                 }
                 //列表入库
                 try { _db.SaveChanges(); }
@@ -123,17 +138,33 @@ namespace Qianli.web.Controllers
                    j["picList"]=j["picList"][0].ToString();
                     p = help.ParseFromJson<Toutiao>(j.ToString());
                     //列表入库
+                    p.columnId = Convert.ToInt32(columnId);
                     if (p.detailUrl.IndexOf("uz.taobao") > 0)
                     {
                         string feedid = help.GetValueAnd("/detail/", "/", p.detailUrl);
                         p.feedId = feedid;
                     }
-                    if (_db.Toutiao.FirstOrDefault(t => t.feedId == p.feedId) == null)
+                     Toutiao toutiaolist = _db.Toutiao.FirstOrDefault(t => t.feedId == p.feedId);
+                     if (toutiaolist == null)
                     {
-                       // TryUpdateModel(p);
+                        // TryUpdateModel(p);
                         p.isDouble11 = false;
                         _db.Toutiao.Add(p);
                     }
+                    else
+                    {
+                        if ((toutiaolist.columnId == 0) && (columnId != "0"))
+                        {
+                            toutiaolist.columnId = Convert.ToInt32(id);
+                            TryUpdateModel(toutiaolist, new string[] { "columnId" });
+                            if (ModelState.IsValid)
+                            {
+                                _db.Entry(toutiaolist).State = EntityState.Modified;
+                            }
+                        }
+
+                    }
+
                     try { _db.SaveChanges(); }
                     catch (Exception e) { string ss = e.Message; }
                     toutiaos.Add(p);
