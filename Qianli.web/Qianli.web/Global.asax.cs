@@ -8,6 +8,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Qianli.web.Models;
 
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "Web.config", Watch = true)]
 namespace Qianli.web
 {
     public class WebApiApplication : System.Web.HttpApplication
@@ -19,6 +20,7 @@ namespace Qianli.web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            log4net.Config.XmlConfigurator.Configure(new System.IO.FileInfo(Server.MapPath("~/Web.config")));
         }
         [CompressAttribute]
         protected void Application_BeginRequest(object sender, EventArgs e)

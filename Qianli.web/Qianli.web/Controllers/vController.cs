@@ -24,16 +24,17 @@ using System.Data.Entity;
 
 namespace Qianli.web.Controllers
 {
+
     public class vController : Controller
     {
+        readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         QianliDataEntities _db; //数据库连接
 
         public vController()
         {
             _db = new QianliDataEntities();
         }
-
-        [CompressAttribute]
+       [CompressAttribute]
         [OutputCache(CacheProfile = "Aggressive")]
         public ActionResult I(string id, string publishId, string subColumn)
         {
@@ -97,7 +98,7 @@ namespace Qianli.web.Controllers
                 }
                 //列表入库
                 try { _db.SaveChanges(); }
-                catch (Exception e) { string ss = e.Message; }
+                catch (Exception e) { logger.Error(e.Message); }
                
                 toutiaos.Add(p);
             }
@@ -107,7 +108,7 @@ namespace Qianli.web.Controllers
             ViewData["subColumn"] = subColumn;
             return View();
         }
-        [CompressAttribute]
+         [CompressAttribute]
         [OutputCache(CacheProfile = "Aggressive")]
         public ActionResult ip(string id, string publishId, string spm, string columnId)
         {
@@ -166,7 +167,7 @@ namespace Qianli.web.Controllers
                     }
 
                     try { _db.SaveChanges(); }
-                    catch (Exception e) { string ss = e.Message; }
+                    catch (Exception e) { logger.Error(e.Message);  }
                     toutiaos.Add(p);
                    
                 }
@@ -188,7 +189,8 @@ namespace Qianli.web.Controllers
                     if (ModelState.IsValid)
                     {
                         _db.Entry(toutiao).State = EntityState.Modified;
-                        _db.SaveChanges();
+                        try { _db.SaveChanges(); }
+                        catch (Exception e) { logger.Error(e.Message); }
                     }
                     return View();
                 }
@@ -220,8 +222,7 @@ namespace Qianli.web.Controllers
                         //TryUpdateModel(toutiaoToAdd);
                         //if (ModelState.IsValid)
                         //{
-                            _db.Toutiao.Add(toutiaoToAdd);
-                            _db.SaveChanges();
+                            _db.Toutiao.Add(toutiaoToAdd);                          
                         //}
                     }
                     else
@@ -236,9 +237,12 @@ namespace Qianli.web.Controllers
                         if (ModelState.IsValid)
                         {
                             _db.Entry(toutiao).State = EntityState.Modified;
-                            _db.SaveChanges();
+                            
                         }
                     }
+                    //SaveChanges
+                    try { _db.SaveChanges(); }
+                    catch (Exception e) { logger.Error(e.Message); }
                     //删除淘宝连接
                     items = bodys.Select("div.item");
                     items.Remove();
@@ -247,8 +251,7 @@ namespace Qianli.web.Controllers
                     items = bodys.Select("a");
                     items.Remove();
                     ViewBag.Title = toutiaoToAdd.name;
-                    toutiaoToAdd.content = bodys.Html();
-                    
+                    toutiaoToAdd.content = bodys.Html();           
 
                    // ViewBag.Title = doc.Title.Replace("淘宝", "网购VIP");
               
@@ -280,8 +283,7 @@ namespace Qianli.web.Controllers
                     //if (ModelState.IsValid)
                     //{
                     
-                        _db.Toutiao.Add(toutiaoToAdd);
-                        _db.SaveChanges();
+                        _db.Toutiao.Add(toutiaoToAdd);                   
                     //}
                 }
                 else {
@@ -295,11 +297,13 @@ namespace Qianli.web.Controllers
                     TryUpdateModel(toutiao, new string[] { "columnId", "content", "subColumn" });
                     if (ModelState.IsValid)
                     {
-                        _db.Entry(toutiao).State = EntityState.Modified;
-                        _db.SaveChanges();
+                        _db.Entry(toutiao).State = EntityState.Modified;                        
                     }
                     
                 }
+                //SaveChanges
+                try { _db.SaveChanges(); }
+                catch (Exception e) { logger.Error(e.Message); }
                 Elements items = bodys.Select("div.item");
                 items.Remove();
                // items = bodys.Select("img");
