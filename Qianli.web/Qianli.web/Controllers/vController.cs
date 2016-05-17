@@ -29,7 +29,7 @@ namespace Qianli.web.Controllers
     {
         readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         QianliDataEntities _db; //数据库连接
-
+        bool isdelitem = true;  //默认删除陶宝连接
         public vController()
         {
             _db = new QianliDataEntities();
@@ -73,7 +73,7 @@ namespace Qianli.web.Controllers
                 try {
                     Convert.ToInt32(j["viewNum"]);
                 }catch{
-                    j["viewNum"] = j["viewNum"].ToString().Replace("万", "1020");
+                    j["viewNum"] = j["viewNum"].ToString().Replace("万", "020").Replace(".", "");
                 }
                 try
                 {
@@ -81,7 +81,7 @@ namespace Qianli.web.Controllers
                 }
                 catch
                 {
-                    j["favourCount"] = j["favourCount"].ToString().Replace("万", "1020");
+                    j["favourCount"] = j["favourCount"].ToString().Replace("万", "011").Replace(".", "");
                 }                
                 
                 Toutiao p = help.ParseFromJson<Toutiao>(j.ToString());
@@ -158,7 +158,7 @@ namespace Qianli.web.Controllers
                    }
                    catch
                    {
-                       j["viewNum"] = j["viewNum"].ToString().Replace("万", "1020");
+                       j["viewNum"] = j["viewNum"].ToString().Replace("万", "200").Replace(".","");
                    }
                    try
                    {
@@ -166,7 +166,7 @@ namespace Qianli.web.Controllers
                    }
                    catch
                    {
-                       j["favourCount"] = j["favourCount"].ToString().Replace("万", "1020");
+                       j["favourCount"] = j["favourCount"].ToString().Replace("万", "020").Replace(".", "");
                    }  
 
                     p = help.ParseFromJson<Toutiao>(j.ToString());
@@ -188,7 +188,7 @@ namespace Qianli.web.Controllers
                     {
                         if ((toutiaolist.columnId == 0) && (columnId != "0"))
                         {
-                            toutiaolist.columnId = Convert.ToInt32(id);
+                            toutiaolist.columnId = Convert.ToInt32(columnId);
                             TryUpdateModel(toutiaolist, new string[] { "columnId" });
                             if (ModelState.IsValid)
                             {
@@ -215,8 +215,23 @@ namespace Qianli.web.Controllers
                     // ViewData["time"] = toutiao.showDate.ToString();
                     ViewBag.Title = toutiao.name;
                     //  ViewData["columnid"] = toutiao.columnId;
+                    if (isdelitem)
+                    {
+                        Document doc = NSoup.NSoupClient.Parse(toutiao.content);
+                        Element bodys = doc.Select("html").First();
+                        Elements items = bodys.Select("div.item");  //删除淘宝连接
+                        items.Remove();
+                        toutiao.content = bodys.ToString();
+                    }                    
                     ViewData.Model = toutiao;
-                    toutiao.viewNum += 1; //y访问量加1
+                    try
+                    {
+                        toutiao.viewNum = Convert.ToInt32(toutiao.viewNum.ToString().Replace(".", "")) + 1;
+                    }
+                    catch {
+                        toutiao.viewNum = 100;
+                    }
+                   // toutiao.viewNum += 1; //y访问量加1
                     TryUpdateModel(toutiao, new string[] { "viewNum" });
                     if (ModelState.IsValid)
                     {
@@ -242,7 +257,7 @@ namespace Qianli.web.Controllers
                     toutiaoToAdd.name = doc.Title.Replace("淘宝", "网购VIP");
                     toutiaoToAdd.showDate = doc.Select("div.detail-time").Html();
                     toutiaoToAdd.feedId = id;
-                    ViewData["time"] = doc.Select("div.detail-time").Html();
+                    //ViewData["time"] = doc.Select("div.detail-time").Html();
                     //删除title 时间 底部连接再入库
                     Elements items = bodys.Select("div.link,.detail-title,.detail-time");
                     items.Remove();
@@ -265,7 +280,7 @@ namespace Qianli.web.Controllers
                             toutiao.columnId = toutiaoToAdd.columnId;
                         }
                         toutiao.subColumn = toutiaoToAdd.subColumn;
-                        TryUpdateModel(toutiao, new string[] { "subColumn", "content", "columnId" });
+                        TryUpdateModel(toutiao, new string[] { "subColumn", "content", "columnId", "showDate" });
                         if (ModelState.IsValid)
                         {
                             _db.Entry(toutiao).State = EntityState.Modified;
@@ -275,13 +290,16 @@ namespace Qianli.web.Controllers
                     //SaveChanges
                     try { _db.SaveChanges(); }
                     catch (Exception e) { logger.Error(e.Message); }
-                    //删除淘宝连接
-                    items = bodys.Select("div.item");
-                    items.Remove();
-                    // items = bodys.Select("img");
-                    // items.Remove();
-                    items = bodys.Select("a");
-                    items.Remove();
+                    if (isdelitem)
+                    {
+                        //删除淘宝连接
+                        items = bodys.Select("div.item");
+                        items.Remove();
+                        // items = bodys.Select("img");
+                        // items.Remove();
+                        items = bodys.Select("a");
+                        items.Remove();
+                    }
                     ViewBag.Title = toutiaoToAdd.name;
                     toutiaoToAdd.content = bodys.Html();           
 
@@ -326,7 +344,7 @@ namespace Qianli.web.Controllers
                         toutiao.columnId = toutiaoToAdd.columnId;
                     }
                     toutiao.subColumn = toutiaoToAdd.subColumn;
-                    TryUpdateModel(toutiao, new string[] { "columnId", "content", "subColumn" });
+                    TryUpdateModel(toutiao, new string[] { "columnId", "content", "subColumn", "showDate" });
                     if (ModelState.IsValid)
                     {
                         _db.Entry(toutiao).State = EntityState.Modified;                        
@@ -336,8 +354,11 @@ namespace Qianli.web.Controllers
                 //SaveChanges
                 try { _db.SaveChanges(); }
                 catch (Exception e) { logger.Error(e.Message); }
-                Elements items = bodys.Select("div.item");
-                items.Remove();
+                if (isdelitem)
+                {
+                    Elements items = bodys.Select("div.item");
+                    items.Remove();
+                }
                // items = bodys.Select("img");
                // items.Remove();
                 //foreach (Element item in items)
