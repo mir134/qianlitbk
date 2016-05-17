@@ -70,12 +70,27 @@ namespace Qianli.web.Controllers
             foreach (var j in ja)
             {
                 j["picList"] = j["picList"][0].ToString();
+                try {
+                    Convert.ToInt32(j["viewNum"]);
+                }catch{
+                    j["viewNum"] = j["viewNum"].ToString().Replace("万", "1020");
+                }
+                try
+                {
+                    Convert.ToInt32(j["favourCount"]);
+                }
+                catch
+                {
+                    j["favourCount"] = j["favourCount"].ToString().Replace("万", "1020");
+                }                
+                
                 Toutiao p = help.ParseFromJson<Toutiao>(j.ToString());
                 p.columnId = Convert.ToInt32(id);
                 if (p.detailUrl.IndexOf("uz.taobao") > 0)
                 {
                     string feedid = help.GetValueAnd("/detail/", "/", p.detailUrl);
-                    p.feedId = feedid;
+                    p.feedId = feedid;                   
+                    
                 }
                 Toutiao toutiao = _db.Toutiao.FirstOrDefault(t => t.feedId == p.feedId);
                 if (toutiao== null)
@@ -98,7 +113,7 @@ namespace Qianli.web.Controllers
                 }
                 //列表入库
                 try { _db.SaveChanges(); }
-                catch (Exception e) { logger.Error(e.Message); }
+                catch (Exception e) { logger.Error(e.Message+ " URL:" + p.detailUrl); }
                
                 toutiaos.Add(p);
             }
@@ -137,6 +152,23 @@ namespace Qianli.web.Controllers
                 foreach (var j in ja)
                 {
                    j["picList"]=j["picList"][0].ToString();
+                   try
+                   {
+                       Convert.ToInt32(j["viewNum"]);
+                   }
+                   catch
+                   {
+                       j["viewNum"] = j["viewNum"].ToString().Replace("万", "1020");
+                   }
+                   try
+                   {
+                       Convert.ToInt32(j["favourCount"]);
+                   }
+                   catch
+                   {
+                       j["favourCount"] = j["favourCount"].ToString().Replace("万", "1020");
+                   }  
+
                     p = help.ParseFromJson<Toutiao>(j.ToString());
                     //列表入库
                     p.columnId = Convert.ToInt32(columnId);
@@ -167,7 +199,7 @@ namespace Qianli.web.Controllers
                     }
 
                     try { _db.SaveChanges(); }
-                    catch (Exception e) { logger.Error(e.Message);  }
+                    catch (Exception e) { logger.Error(e.Message + " URL:" + p.detailUrl); }
                     toutiaos.Add(p);
                    
                 }
