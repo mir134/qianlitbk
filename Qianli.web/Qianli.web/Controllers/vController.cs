@@ -30,6 +30,7 @@ namespace Qianli.web.Controllers
         readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         QianliDataEntities _db; //数据库连接
         bool isdelitem = true;  //默认删除陶宝连接
+       
         public vController()
         {
             _db = new QianliDataEntities();
@@ -38,6 +39,7 @@ namespace Qianli.web.Controllers
         [OutputCache(CacheProfile = "Aggressive")]
         public ActionResult I(string id, string publishId, string subColumn)
         {
+            ViewData["isdelitem"] = isdelitem;
             ViewData.Model = _db.Toutiao.Where(t=>t.content.ToString()=="").Take(20).ToList();
             string severUrl = System.Web.Configuration.WebConfigurationManager.AppSettings["severUrl"];
             string appKey = System.Web.Configuration.WebConfigurationManager.AppSettings["appKey"];
@@ -127,6 +129,7 @@ namespace Qianli.web.Controllers
         [OutputCache(CacheProfile = "Aggressive")]
         public ActionResult ip(string id, string publishId, string spm, string columnId)
         {
+            ViewData["isdelitem"] = isdelitem;
             ViewData["ID"] = id;
             ViewData["publishId"] = publishId;
             ViewData["JArray"] = new JArray();
@@ -214,16 +217,7 @@ namespace Qianli.web.Controllers
                     // ViewData["bodys"] = toutiao.content;
                     // ViewData["time"] = toutiao.showDate.ToString();
                     ViewBag.Title = toutiao.name;
-                    //  ViewData["columnid"] = toutiao.columnId;
-                    if (isdelitem)
-                    {
-                        Document doc = NSoup.NSoupClient.Parse(toutiao.content);
-                        Element bodys = doc.Select("html").First();
-                        Elements items = bodys.Select("div.item");  //删除淘宝连接
-                        items.Remove();
-                        toutiao.content = bodys.ToString();
-                    }                    
-                    ViewData.Model = toutiao;
+                    //  ViewData["columnid"] = toutiao.columnId;                    
                     try
                     {
                         toutiao.viewNum = Convert.ToInt32(toutiao.viewNum.ToString().Replace(".", "")) + 1;
@@ -239,6 +233,17 @@ namespace Qianli.web.Controllers
                         try { _db.SaveChanges(); }
                         catch (Exception e) { logger.Error(e.Message); }
                     }
+
+                    if (isdelitem)
+                    {
+                        Document doc = NSoup.NSoupClient.Parse(toutiao.content);
+                        Element bodys = doc.Select("html").First();
+                        Elements items = bodys.Select("div.item");  //删除淘宝连接
+                        items.Remove();
+                        toutiao.content = bodys.Select("body").Html();
+                    }
+                    ViewData.Model = toutiao;
+
                     return View();
                 }
             }
@@ -261,6 +266,17 @@ namespace Qianli.web.Controllers
                     //删除title 时间 底部连接再入库
                     Elements items = bodys.Select("div.link,.detail-title,.detail-time");
                     items.Remove();
+                    Elements items2 = bodys.Select("a");
+                    foreach (Element a in items2)
+                    {
+                        if (a.Attr("href").IndexOf("taobao.com/item") > 0)
+                        {
+                            string itemid = a.Attr("href").Replace("http://item.taobao.com/item.htm?id=", "");
+                            // a.Attr("biz-itemid="529529878658" isconvert=1","")
+                            a.Attr("isconvert", "1");
+                            a.Attr("biz-itemid", itemid);
+                        }
+                    }
                     toutiaoToAdd.content = bodys.Html();
                     toutiaoToAdd.publishId = publishId;
 
@@ -322,7 +338,17 @@ namespace Qianli.web.Controllers
                 toutiaoToAdd.feedId = id;
                 ViewData["time"] = doc.Select("div.detail-time").Html();
                 //删除title 时间 底部连接再入库
-               
+                Elements items1 = bodys.Select("a");
+                foreach (Element a in items1)
+                {
+                    if (a.Attr("href").IndexOf("taobao.com/item") > 0)
+                    {
+                        string itemid = a.Attr("href").Replace("http://item.taobao.com/item.htm?id=", "");
+                        // a.Attr("biz-itemid="529529878658" isconvert=1","")
+                        a.Attr("isconvert", "1");
+                        a.Attr("biz-itemid", itemid);
+                    }
+                }
                 toutiaoToAdd.content = bodys.Html();
                 toutiaoToAdd.publishId = publishId;
 

@@ -15,6 +15,7 @@
     int i = 1;
 
     string iurl = "<a href='/v/i/'> 最新头条  </a>";
+    string aliurl = " <a data-type='2' biz-keyword='女装' data-tmpl='720x220' data-tmplid='209' data-rd='2' data-style='2' data-border='1' href='#'>女装</a>";
     string columnId="0";
     if(ViewData.Model.columnId!=null){
         columnId = ViewData.Model.columnId.ToString();
@@ -23,33 +24,43 @@
     {
         case "28":
             iurl = "<a href='/v/i/" + columnId + "'>数码极客 </a>";
+            aliurl = " <a data-type='2' biz-keyword='数码' data-tmpl='720x220' data-tmplid='209' data-rd='2' data-style='2' data-border='1' href='#'>数码</a>";
             break;
         case "25":
             iurl = "<a href='/v/i/" + columnId + "'>穿衣搭配 </a>";
+            aliurl = " <a data-type='2' biz-keyword='穿衣搭配' data-tmpl='720x220' data-tmplid='209' data-rd='2' data-style='2' data-border='1' href='#'>穿衣搭配</a>";
             break;
         case "29":
             iurl = "<a href='/v/i/" + columnId + "'>美容课 </a>";
+            aliurl = " <a data-type='2' biz-keyword='美容' data-tmpl='720x220' data-tmplid='209' data-rd='2' data-style='2' data-border='1' href='#'>美容</a>";
             break;
         case "27":
             iurl = "<a href='/v/i/" + columnId + "'>我是吃货 </a>";
+            aliurl = " <a data-type='2' biz-keyword='吃货' data-tmpl='720x220' data-tmplid='209' data-rd='2' data-style='2' data-border='1' href='#'>吃货</a>";
             break;
         case "10":
             iurl = "<a href='/v/i/" + columnId + "'>最生活 </a>";
+            aliurl = " <a data-type='2' biz-keyword='生活' data-tmpl='720x220' data-tmplid='209' data-rd='2' data-style='2' data-border='1' href='#'>生活</a>";
             break;
         case "26":
             iurl = "<a href='/v/i/" + columnId + "'>辣妈俏娃 </a>";
+            aliurl = " <a data-type='2' biz-keyword='宝宝' data-tmpl='720x220' data-tmplid='209' data-rd='2' data-style='2' data-border='1' href='#'>宝宝</a>";
             break;
         case "13":
             iurl = "<a href='/v/i/" + columnId + "'>特卖库 </a>";
+            aliurl = " <a data-type='2' biz-keyword='特卖' data-tmpl='720x220' data-tmplid='209' data-rd='2' data-style='2' data-border='1' href='#'>特卖</a>";
             break;
         case "18":
             iurl = "<a href='/v/i/" + columnId + "'>健康行 </a>";
+            aliurl = " <a data-type='2' biz-keyword='健康' data-tmpl='720x220' data-tmplid='209' data-rd='2' data-style='2' data-border='1' href='#'>健康</a>";
             break;
         case "22":
             iurl = "<a href='/v/i/" + columnId + "'>星座 </a>";
+            aliurl = " <a data-type='2' biz-keyword='星座' data-tmpl='720x220' data-tmplid='209' data-rd='2' data-style='2' data-border='1' href='#'>星座</a>";
             break;
         case "24":
             iurl = "<a href='/v/i/" + columnId + "'>家居生活 </a>";
+            aliurl = " <a data-type='2' biz-keyword='家居' data-tmpl='720x220' data-tmplid='209' data-rd='2' data-style='2' data-border='1' href='#'>家居</a>";
             break;
     }
 }
@@ -72,7 +83,10 @@
             
             @Html.Raw(ViewData.Model.content)      
 
-          
+@if (ViewData["isdelitem"].ToString() == "False")
+{
+           @Html.Raw(@aliurl)
+}
         </div>
 
         <div class="guide">
@@ -113,7 +127,7 @@
 
             <div class="hot-title">
 
-                <div class="hot-title-text">本周热门</div>
+                <div class="hot-title-text">本周热门 </div>
 
             </div>
 
@@ -171,3 +185,26 @@
 
     </div>
 
+@if (ViewData["isdelitem"].ToString() == "False")
+{
+    <script type="text/javascript">
+        (function (win, doc) {
+            var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0];
+            if (!win.alimamatk_show) {
+                s.charset = "gbk";
+                s.async = true;
+                s.src = "http://a.alimama.cn/tkapi.js";
+                h.insertBefore(s, h.firstChild);
+            };
+            var o = {
+                pid: "mm_13524639_1964869_55990456",/*推广单元ID，用于区分不同的推广渠道*/
+                appkey: "",/*通过TOP平台申请的appkey，设置后引导成交会关联appkey*/
+                unid: "",/*自定义统计字段*/
+                type: "click" /* click 组件的入口标志 （使用click组件必设）*/
+            };
+            win.alimamatk_onload = win.alimamatk_onload || [];
+            win.alimamatk_onload.push(o);
+        })(window, document);
+    </script>
+
+}
