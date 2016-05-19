@@ -1,0 +1,210 @@
+﻿@Styles.Render("~/Content/toutiao/goods")
+@{
+    Layout = "~/Views/Shared/_mallLayout.cshtml";
+   // HttpWebRequest request = (HttpWebRequest)WebRequest.Create("Http://www.baidu.com");
+    // Downloads the XML file from the specified server.
+   // HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+   // System.IO.StreamReader sr = new StreamReader(response.GetResponseStream(), System.Text.Encoding.GetEncoding("utf-8"));
+   // ViewData["bodys"] = sr.ReadToEnd();
+   // sr.Close();
+   // response.Close();
+    //Html.Raw("sdfsdfds");
+  //  NSoup.Nodes.Document doc = NSoup.NSoupClient.Connect("http://uz.taobao.com/detail/5555795696/").Get();
+    // NSoup.Nodes.Element masthead = doc.ToString();
+    // ViewData["bodys"] = doc.ToString();<img src='@Html.Raw(@NTbkItem["picList"][0].ToString())' />
+    int i = 1;
+
+    string iurl = "<a href='/v/i/'> 最新头条  </a>";
+    string aliurl = " <a data-type='2' biz-keyword='女装' data-tmpl='720x220' data-tmplid='209' data-rd='2' data-style='2' data-border='1' href='#'>女装</a>";
+    string columnId="0";
+    if(ViewData.Model.columnId!=null){
+        columnId = ViewData.Model.columnId.ToString();
+    }
+    switch (columnId)
+    {
+        case "28":
+            iurl = "<a href='/v/i/" + columnId + "'>数码极客 </a>";
+            aliurl = " <a data-type='2' biz-keyword='数码' data-tmpl='720x220' data-tmplid='209' data-rd='2' data-style='2' data-border='1' href='#'>数码</a>";
+            break;
+        case "25":
+            iurl = "<a href='/v/i/" + columnId + "'>穿衣搭配 </a>";
+            aliurl = " <a data-type='2' biz-keyword='穿衣搭配' data-tmpl='720x220' data-tmplid='209' data-rd='2' data-style='2' data-border='1' href='#'>穿衣搭配</a>";
+            break;
+        case "29":
+            iurl = "<a href='/v/i/" + columnId + "'>美容课 </a>";
+            aliurl = " <a data-type='2' biz-keyword='美容' data-tmpl='720x220' data-tmplid='209' data-rd='2' data-style='2' data-border='1' href='#'>美容</a>";
+            break;
+        case "27":
+            iurl = "<a href='/v/i/" + columnId + "'>我是吃货 </a>";
+            aliurl = " <a data-type='2' biz-keyword='吃货' data-tmpl='720x220' data-tmplid='209' data-rd='2' data-style='2' data-border='1' href='#'>吃货</a>";
+            break;
+        case "10":
+            iurl = "<a href='/v/i/" + columnId + "'>最生活 </a>";
+            aliurl = " <a data-type='2' biz-keyword='生活' data-tmpl='720x220' data-tmplid='209' data-rd='2' data-style='2' data-border='1' href='#'>生活</a>";
+            break;
+        case "26":
+            iurl = "<a href='/v/i/" + columnId + "'>辣妈俏娃 </a>";
+            aliurl = " <a data-type='2' biz-keyword='宝宝' data-tmpl='720x220' data-tmplid='209' data-rd='2' data-style='2' data-border='1' href='#'>宝宝</a>";
+            break;
+        case "13":
+            iurl = "<a href='/v/i/" + columnId + "'>特卖库 </a>";
+            aliurl = " <a data-type='2' biz-keyword='特卖' data-tmpl='720x220' data-tmplid='209' data-rd='2' data-style='2' data-border='1' href='#'>特卖</a>";
+            break;
+        case "18":
+            iurl = "<a href='/v/i/" + columnId + "'>健康行 </a>";
+            aliurl = " <a data-type='2' biz-keyword='健康' data-tmpl='720x220' data-tmplid='209' data-rd='2' data-style='2' data-border='1' href='#'>健康</a>";
+            break;
+        case "22":
+            iurl = "<a href='/v/i/" + columnId + "'>星座 </a>";
+            aliurl = " <a data-type='2' biz-keyword='星座' data-tmpl='720x220' data-tmplid='209' data-rd='2' data-style='2' data-border='1' href='#'>星座</a>";
+            break;
+        case "24":
+            iurl = "<a href='/v/i/" + columnId + "'>家居生活 </a>";
+            aliurl = " <a data-type='2' biz-keyword='家居' data-tmpl='720x220' data-tmplid='209' data-rd='2' data-style='2' data-border='1' href='#'>家居</a>";
+            break;
+    }
+}
+
+    <!-- 左栏 -->
+
+    <div class="content" data-spm="1998565201">
+
+        <div class="bread">
+
+            <a href='/v/i'>主页 </a> > @Html.Raw(@iurl) >   @ViewBag.Title
+        </div>
+
+        <div class="detail">
+
+            <div class="detail-title">@ViewBag.Title</div>
+
+            <div class="detail-time">@ViewData.Model.showDate</div>
+
+            
+            @Html.Raw(ViewData.Model.content)      
+
+@if (ViewData["isdelitem"].ToString() == "False")
+{
+           @Html.Raw(@aliurl)
+}
+        </div>
+
+        <div class="guide">
+
+            <img src="/Content/toutiao/images/qianliwx2.png">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- 右边栏 -->
+
+    <div class="sidebar">
+
+        <div class="qrcode">
+
+            <div class="qrcode-pic"> <img src="/Content/toutiao/images/qianliwx.png"> </div>
+
+            <div class="qrcode-info">
+
+                <div class="qrcode-title">千里头条 时刻新鲜</div>
+
+                <div class="qrcode-desc">扫码查看更多头条快讯</div>
+
+            </div>
+
+            <div class="qrcode-line"></div>
+
+        </div>
+
+        <div data-spm="1998565036"> <a href="http://v.qianliweb.com/v/i" style="border: none;" target="_blank" class="recruit"> <img src="/Content/toutiao/images/qianlihz.png"> </a> </div><br>
+
+        <div><a href="#"><img src="/Content/toutiao/images/336-280.gif"></a></div>
+
+        <div class="hot">
+
+            <div class="hot-title">
+
+                <div class="hot-title-text">本周热门 </div>
+
+            </div>
+
+            <div class="hot-list" data-spm="1998565037">
+
+
+@foreach (var t in ViewData["toutiaos"] as List<Qianli.web.Models.v.Toutiao>)
+{
+    //try
+    //{
+    if (t.detailUrl.IndexOf("headline.taobao") > 0 || t.detailUrl.IndexOf("uz.taobao") > 0)
+    {              
+
+    <a class="item" href="@Html.Raw(@t.detailUrl.Replace("http://headline.taobao.com/feed/feedDetail.htm?id=", "/v/ip/").Replace("http://uz.taobao.com/detail/", "/v/ip/"))?&publishId=@Html.Raw(@t.publishId)&columnid=@Html.Raw(columnId)">
+
+        <div class="item-rank rank-second">@i.ToString()</div>
+
+        <div class="item-pic"><img src='@Html.Raw(@t.picList.ToString())' /></div>
+
+        <div class="item-info">
+
+            <div class="item-title">@t.name</div>
+
+            <div class="item-desc">@t.description</div>
+
+        </div>
+
+        <div class="item-status">
+
+            <div class="item-view">
+
+                <div class="item-status-text">@t.viewNum.ToString()</div>
+
+            </div>
+
+            <div class="item-up">
+
+                <div class="item-status-text">@t.favourCount.ToString() </div>
+
+            </div>
+
+        </div>
+
+    </a>
+            i = i + 1;
+        }
+    //}
+    //catch { }
+}
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+@if (ViewData["isdelitem"].ToString() == "False")
+{
+    <script type="text/javascript">
+        (function (win, doc) {
+            var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0];
+            if (!win.alimamatk_show) {
+                s.charset = "gbk";
+                s.async = true;
+                s.src = "http://a.alimama.cn/tkapi.js";
+                h.insertBefore(s, h.firstChild);
+            };
+            var o = {
+                pid: "mm_13524639_1964869_55990456",/*推广单元ID，用于区分不同的推广渠道*/
+                appkey: "",/*通过TOP平台申请的appkey，设置后引导成交会关联appkey*/
+                unid: "",/*自定义统计字段*/
+                type: "click" /* click 组件的入口标志 （使用click组件必设）*/
+            };
+            win.alimamatk_onload = win.alimamatk_onload || [];
+            win.alimamatk_onload.push(o);
+        })(window, document);
+    </script>
+
+}

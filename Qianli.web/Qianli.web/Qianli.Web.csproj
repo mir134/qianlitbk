@@ -317,6 +317,10 @@
     <Content Include="Views\v\i.cshtml" />
     <Content Include="Views\v\ip.cshtml" />
     <Content Include="Views\Shared\_mallLayout.cshtml" />
+    <Content Include="Views\Shared\_mallLayout - 复制.cshtml" />
+    <Content Include="Views\v\i - 复制.cshtml" />
+    <Content Include="Views\v\ip - 复制.cshtml" />
+    <Content Include="Views\v\p.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

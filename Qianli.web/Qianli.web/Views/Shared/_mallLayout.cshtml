@@ -1,71 +1,163 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
+<!--[if IE 6]><html class="ie lt-ie8"><![endif]-->
+<!--[if IE 7]><html class="ie lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="ie ie8"><![endif]-->
+<!--[if IE 9]><html class="ie ie9"><![endif]-->
+<!--[if !IE]><!-->
 <html>
+ <!--<![endif]-->
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="mobile-agent" content="format=html5; url=http://v.qianliweb.com/">
+
     <title>@ViewBag.Title</title>
 
-    @Styles.Render("~/Content/toutiao/index")
-    @Scripts.Render("~/bundles/jstoutiao")
-    @Scripts.Render("~/bundles/jquery")  
+    <!--[if lte IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    @Styles.Render("~/Content/tt/vcss")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/modernizr")
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if IE 8]><link rel="stylesheet" media="all" href="/Content/tt/css/for_ie-7f1c477ffedc13c11315103e8787dc6c.css" /><![endif]-->
+    <!--[if lt IE 9]><link rel="stylesheet" media="all" href="/Content/tt/css/for_ie-7f1c477ffedc13c11315103e8787dc6c.css" /><![endif]-->
+
+
+    @{ string url = HttpContext.Current.Request.Path;
+      }
+    
 </head>
-<body>
-       <!-- 页面主体 -->
+<body class="output fluid zh cn win mozilla reader-day-mode reader-font2" data-js-module="recommendation" data-locale="zh-CN">
 
-    <div class="container">
-        <!-- 导航条 -->
+    <div class="navbar navbar-jianshu shrink">
+        <div class="dropdown">
+            <a class="dropdown-toggle logo" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="javascript:void(0)">
+                VIP
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <li><a href="/"><i class="fa fa-home"></i> 首页</a></li>
+                <li><a href="/v"><i class="fa fa-th"></i> 专题</a></li>
 
-        <div id="J_Nav" class="app-nav" data-spm="1998565197">
-            <div class="nav-container">
-                <a class="nav-logo" href="/"></a>
-                <div class="nav-items">
-                    <a class="nav-item " href="/v/i"> 最新头条 </a>
-                    <a class="nav-item" href='/v/i/25'> 穿衣搭配 </a>
-                    <a class="nav-item" href='/v/i/28'> 数码极客 </a>
-                    <a class="nav-item" href='/v/i/29'> 美容护肤 </a>
-                    <a class="nav-item" href='/v/i/24'> 家居生活 </a>
-                    <a class="nav-item" href='/v/i/26'> 辣妈俏娃 </a>
-                    <a class="nav-item" href='/v/i/27'> 我是吃货 </a>
+            </ul>
+        </div>
+    </div>
+    <div class="navbar-user">
+        <a class="login" data-signup-link="true" data-toggle="modal" href="#">
+            <i class="fa fa-user"></i> 注册
+        </a>    <a class="login" data-signin-link="true" data-toggle="modal" href="#">
+            <i class="fa fa-sign-in"></i> 登录
+        </a>    <a class="daytime set-view-mode pull-right" href="javascript:void(0)"><i class="fa fa-moon-o"></i></a>
+    </div>
+    <div class="navbar navbar-jianshu expanded">
+        <div class="dropdown">
+            <a class="logo" role="button" data-original-title="个人主页" data-container="div.expanded" href="/">
+                <b>VIP</b><i class="fa fa-home"></i><span class="title">首页</span>
+            </a>      <a data-toggle="tooltip" data-placement="right" data-original-title="最新头条" data-container="div.expanded" href="/v">
+                <i class="fa fa-th"></i><span class="title">最新头条</span>
+            </a>
+
+            <a data-toggle="tooltip" data-placement="right" data-original-title="往期头条" data-container="div.expanded" href="/v/p">
+                <i class="fa fa-th"></i><span class="title">往期头条</span>
+            </a>
+
+            <a data-toggle="tooltip" data-placement="right" data-original-title="看过头条" data-container="div.expanded" href="/v/p/0">
+                <i class="fa fa-th"></i><span class="title">看过头条</span>
+            </a>
+            <a class="ad-selector" href="javascript:viod(0)">
+                <i class="fa fa-mobile"></i><span class="title">关注微信</span>
+            </a>    <div class="ad-container ">
+                <div class="ad-pop">
+                    <img class="ad-logo" src="/Content/tt/img/logo.png" alt="114" />
+                    <p class="ad-title">千里技术</p>
+                    <img class="ad-qrcode" src="/Content/tt/img/qianliwx.png" alt="weixin app qrcode" />
+                    <div>
+
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- 主要内容 -->
-        <div class="main">
-            @RenderBody()
+        <div class="nav-user">
+            <a href='#view-mode-modal' data-toggle='modal'><i class="fa fa-font"></i><span class="title">显示模式</span></a>
+            <a class="signin" style="display:none" data-signin-link="true" data-toggle="modal" data-placement="right" data-original-title="登录" data-container="div.expanded" href="/sign_in">
+                <i class="fa fa-sign-in"></i><span class="title">登录</span>
+            </a>
         </div>
-
-</div>
-
-<div class="footer" data-spm="1997523009">
-
-        <div class="footer-hd">
-
+    </div>
+    <div class="row-fluid">
+        @RenderBody()
+    </div>
+    <footer>
+        <div class="footer-l">
             <p>
-                <a href='/v/i/0' target='_blank'>头条</a>  <b>|</b>
-                <a href='/v/i/28' target='_blank'>数码控</a>  <b>|</b>
-                <a href='/v/i/25' target='_blank'>爱穿搭</a>  <b>|</b>
-                <a href='/v/i/29' target='_blank'>美容课</a>  <b>|</b>
-                <a href='/v/i/27' target='_blank'>大吃货</a>  <b>|</b>
-                <a href='/v/i/10' target='_blank'>最生活</a>  <b>|</b>
-                <a href='/v/i/26' target='_blank'>辣妈营</a>  <b>|</b>
-                <a href='/v/i/13' target='_blank'>特卖库</a>  <b>|</b>
-                <a href='/v/i/18' target='_blank'>健康行</a>  <b>|</b>
-                <a href='/v/i/22' target='_blank'>星座</a>  <b>|</b>
-                
+                <a href="http://www.qianliweb.com/">千里技术</a> |
+                <a href="http://v.qianliweb.com/">网购VIP头条</a> |
+
+            </p>
+
+            <p>©2009-2016 <a href="/" target="_blank">千里网络</a> / 粤ICP备09160611号-1 </p>
         </div>
+        <div class="footer-r pull-right">
+            <div class="app-download-btn">
+                <a href="#">
+                    <img src="/Content/tt/images/ios-bf05821ad054ccfb594fcc43a92a3753.png" alt="Ios" />
+                </a>      <a href="#">
+                    <img src="/Content/tt/images/android-63f9ad04e8805deae8d8e93ee45c5a2d.png" alt="Android" />
+                </a>
+            </div>
+            <div>
+                关注我们:
+                <a href="http://weibo.com/qianliweb" target="_blank">
+                    <i class="fa fa-weibo"></i>
+                </a>
+                <a class="weixin" href="#share-weixin-modal" data-toggle="modal">
+                    <i class="fa fa-weixin"></i>
+                </a>
 
-        <div class="footer-bd">
-
-            <p> <a href="http://www.qianliweb.com/">千里网络</a>  <a href="http://v.qianliweb.com/">网购VIP头条</a>  <em>© 2015 <a href="http://www.qianliweb.com/">千里技术</a> 版权所有 </em> </p>
-
-            <p> <span>千里头条 购物头条  <span data-spm-protocol="i">备案号：<a href="http://www.miibeian.gov.cn/">(粤ICP备09160611号-1)</a></span> <b>|</b>
-
+                <br><a href="http://windows.microsoft.com/zh-CN/internet-explorer/download-ie" class="upgrade-ie">本网站不支持 IE6/IE7，如果您希望继续使用 IE 浏览器，请升级至IE8及以上版本</a>
+            </div>
         </div>
+        <!--modal-->
+        <div class="modal hide fade share-weixin-modal" id="share-weixin-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p>关注我们的微信公众号，获得每日好导购文推荐。微信中搜索「千里技术」或者扫一扫下方二维码：</p>
+                        <img src="/Content/tt/img/qianliwx.png" alt="qianliweb wechat qrcode" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div id="flash" class="hide">
+        <script src="http://s23.cnzz.com/stat.php?id=1609029&web_id=1609029" language="JavaScript"></script>
+    </div>
 
-        <div class="footer-ft"> <script src="http://s23.cnzz.com/stat.php?id=1609029&web_id=1609029" language="JavaScript"></script></div>
-
-</div>
+    <div id="view-mode-modal" tabindex="-1" class="modal hide read-modal" aria-hidden="false" data-js-module='view-mode-modal'>
+        <div class="btn-group change-background" data-toggle="buttons-radio">
+            <a class="btn btn-daytime active" data-mode="day" href="javascript:void(null);">
+                <i class="fa fa-sun-o"></i>
+            </a>      <a class="btn btn-nighttime " data-mode="night" href="javascript:void(null);">
+                <i class="fa fa-moon-o"></i>
+            </a>
+        </div>
+        <div class="btn-group change-font" data-toggle="buttons-radio">
+            <a class="btn font " data-font="font1" href="javascript:void(null);">宋体</a>
+            <a class="btn font hei active" data-font="font2" href="javascript:void(null);">黑体</a>
+        </div>
+        <div class="btn-group change-locale" data-toggle="buttons-radio">
+            <a class="btn font active" data-locale="zh-CN" href="javascript:void(null);">简</a>
+            <a class="btn font hei " data-locale="zh-TW" href="javascript:void(null);">繁</a>
+        </div>
+    </div>
+    <!-- Javascripts
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    @Scripts.Render("~/bundles/base")
     <script>
         function getQueryString(name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
@@ -73,28 +165,39 @@
             if (r != null) return unescape(r[2]); return null;
         }
 
-        $(".nav-items  a").each(function () {
+        $(".dropdown  a").each(function () {
             var uid = getQueryString("columnid");
-    
+
             if (uid == "0") { uid = "index"; };
-                 $this = $(this);
-                // alert($this[0].href);
-                  if($this[0].href==String(window.location)){
+            $this = $(this);
+            // alert($this[0].href);
+            if ($this[0].href == String(window.location)) {
 
-                      $this.addClass("nav-active");
+                $this.addClass("active");
 
-                      }    
-                  if (($this[0].href.indexOf(uid) > 1)) {
-                      $this.addClass("nav-active");
-                  }
-                
-                  if ($this[0].href == "http://v.qianliweb.com/v/i"  && uid == "index"  ) {
-                      $this.addClass("nav-active");
-                  }
-                });
+            }
+
+            if ("@url" == "/v/p") {
+                if (($this[0].href.indexOf(String("@url")) > 1)) {
+                    $this.addClass("active");
+                    return false;
+                }
+            }
+            if ("@url" == "/v/p/0") {
+                if (($this[0].href.indexOf(String("@url")) > 1)) {
+                    $this.addClass("active");
+                }
+            }
+
+
+
+
+        });
     </script>
-        @Scripts.Render("~/bundles/jquery")      
-        @RenderSection("scripts", required: false)   
+
+
+
+
 
 </body>
 </html>

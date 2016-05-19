@@ -29,18 +29,48 @@ namespace Qianli.web.Controllers
     {
         readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         QianliDataEntities _db; //数据库连接
-        bool isdelitem = true;  //默认删除陶宝连接
+        bool isdelitem = false;  //默认删除陶宝连接
        
         public vController()
         {
             _db = new QianliDataEntities();
         }
+        [CompressAttribute]
+        public ActionResult p(string id, string columnid, string subColumn)
+        {
+            ViewData["isdelitem"] = isdelitem;
+            int columnId = 0;
+            try { columnId = Convert.ToInt32(columnid); }
+            catch {
+                columnId = 0;
+            }            
+            if (id == "0") {
+                if (columnId != 0) { ViewData.Model = _db.Toutiao.Where(t => t.content.ToString() != "" && t.columnId == columnId).Take(20).ToList(); }
+                else
+                {
+                    ViewData.Model = _db.Toutiao.Where(t => t.content.ToString() != "").Take(20).ToList();
+                }
+            }
+            else
+            {
+                if (columnId != 0) { ViewData.Model = _db.Toutiao.Where(t => t.content.ToString() == "" && t.columnId == columnId).Take(20).ToList(); }
+                else
+                {
+                    ViewData.Model = _db.Toutiao.Where(t => t.content.ToString() == "").Take(20).ToList();
+                }
+            }
+           // ViewData["columnId"] = id;
+            //ViewData["subColumn"] = subColumn;
+            return View();
+        }
+
        [CompressAttribute]
         [OutputCache(CacheProfile = "Aggressive")]
         public ActionResult I(string id, string publishId, string subColumn)
         {
             ViewData["isdelitem"] = isdelitem;
             ViewData.Model = _db.Toutiao.Where(t=>t.content.ToString()=="").Take(20).ToList();
+           
             string severUrl = System.Web.Configuration.WebConfigurationManager.AppSettings["severUrl"];
             string appKey = System.Web.Configuration.WebConfigurationManager.AppSettings["appKey"];
             string appSecret = System.Web.Configuration.WebConfigurationManager.AppSettings["appSecret"];
@@ -114,8 +144,9 @@ namespace Qianli.web.Controllers
                 
                 }
                 //列表入库
+               // _db.SaveChanges();
                 try { _db.SaveChanges(); }
-                catch (Exception e) { logger.Error(e.Message+ " URL:" + p.detailUrl); }
+                catch (Exception e) { logger.Error(e.Message + " URL:" + Request.Url.ToString()); }
                
                 toutiaos.Add(p);
             }
@@ -202,7 +233,7 @@ namespace Qianli.web.Controllers
                     }
 
                     try { _db.SaveChanges(); }
-                    catch (Exception e) { logger.Error(e.Message + " URL:" + p.detailUrl); }
+                    catch (Exception e) { logger.Error(e.Message + " URL:" + Request.Url.ToString() + "columnId:" + toutiaolist.columnId + "|" + columnId); }
                     toutiaos.Add(p);
                    
                 }

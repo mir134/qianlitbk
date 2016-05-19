@@ -2,7 +2,7 @@
     Layout = "~/Views/Shared/_mallLayout.cshtml";
     ViewBag.Title = "网购VIP头条-千里V商城";
                     //<img src='@Html.Raw(@NTbkItem["picList"][0].ToString())' /> 
-    
+    string url = HttpContext.Current.Request.Path;
 }
 
 <div class="recommended">
@@ -12,9 +12,9 @@
         <div class="bottom-block">
 
             <h1>VIP头条</h1>
-            <h3>网购VIP头条，沟通想法</h3>
+            <h3>网购头条，沟通想法</h3>
             <p class="fa fa-lightbulb-o">一个基于网购内容分享的网站</p>
-           
+            
         </div>
     </div>
     <div class="span7 offset3">
@@ -24,30 +24,30 @@
                     <a href="/v/i"> 最新头条 </a>
                 </li>
                 <li>
-                    <a class="category" href='/v/i/25'> 穿衣搭配 </a>
+                    <a class="category" href='@Html.Raw(@url)?columnid=25'> 穿衣搭配 </a>
                 </li>
                 <li>
-                    <a class="category" href='/v/i/28'> 数码极客 </a>
+                    <a class="category" href='@Html.Raw(@url)?columnid=28'> 数码极客 </a>
                 </li>
                 <li>
-                    <a class="category" href='/v/i/29'> 美容护肤 </a>
+                    <a class="category" href='@Html.Raw(@url)?columnid=29'> 美容护肤 </a>
                 </li>
                 <li>
-                    <a class="category" href='/v/i/24'> 家居生活 </a>
+                    <a class="category" href='@Html.Raw(@url)?columnid=24'> 家居生活 </a>
                 </li>
                 <li>
-                    <a class="category" href='/v/i/26'> 辣妈俏娃 </a>
+                    <a class="category" href='@Html.Raw(@url)?columnid=26'> 辣妈俏娃 </a>
                 </li>
-                <li><a class="category" href='/v/i/27'> 我是吃货 </a></li>
+                <li><a class="category" href='@Html.Raw(@url)?columnid=27'> 我是吃货 </a></li>
 
-                <li><a href='/v/i/10' class="category">最生活</a></li>
+                <li><a href='@Html.Raw(@url)?columnid=10' class="category">最生活</a></li>
 
 
-                <li><a href='/v/i/13' class="category">特卖库</a></li>
+                <li><a href='@Html.Raw(@url)?columnid=13' class="category">特卖库</a></li>
 
-                <li><a href='/v/i/18' class="category">健康行</a></li>
+                <li><a href='@Html.Raw(@url)?columnid=18' class="category">健康行</a></li>
 
-                <li><a href='/v/i/22' class="category">星座</a></li>
+                <li><a href='@Html.Raw(@url)?columnid=22' class="category">星座</a></li>
 
                 <li class="search">
                     <form class="search-form" target="_blank" action="/search" accept-charset="UTF-8" method="get">
@@ -58,25 +58,24 @@
                 </li>
                 <li><img class="hide loader-tiny" src="/Content/tt/images/tiny.gif" alt="Tiny" /></li>
             </ul>
-          
 
-         
+          
         </div>
         <div id="list-container">
 
             
             <ul class="article-list thumbnails">
-@foreach (var NTbkItem in ViewData["JArray"] as List<Qianli.web.Models.v.Toutiao>)
+@foreach (var NTbkItem in ViewData.Model )
 {
     if (NTbkItem.detailUrl.IndexOf("headline.taobao") > 0 || NTbkItem.detailUrl.IndexOf("uz.taobao") > 0)
     {
-        string url=NTbkItem.detailUrl.Replace("http://headline.taobao.com/feed/feedDetail.htm?id=", "/v/ip/").Replace("http://uz.taobao.com/detail/", "/v/ip/")+"?&publishId="+NTbkItem.publishId+"&columnid="+ViewData["columnid"].ToString()+"&subColumn="+ViewData["subColumn"].ToString();
+         url = NTbkItem.detailUrl.Replace("http://headline.taobao.com/feed/feedDetail.htm?id=", "/v/ip/").Replace("http://uz.taobao.com/detail/", "/v/ip/") + "?&publishId=" + NTbkItem.publishId + "&columnid=" + NTbkItem.columnId.ToString();
        
-                <li class=have-img>
+                <li class="have-img">
                     <a class="wrap-img" href="@Html.Raw(@url)"><img src="@Html.Raw(@NTbkItem.picList)" alt="300" /></a>
                     <div>
 
-                        <h4 class="title"><a   href="@Html.Raw(@url)">@NTbkItem.name</a></h4>
+                        <h4 class="title"><a  href="@Html.Raw(@url)">@NTbkItem.name</a></h4>
                         <p class="description">@NTbkItem.description</p>
                         <div class="list-footer">
                             <span> · 阅读 @NTbkItem.viewNum.ToString()</span>
@@ -105,7 +104,7 @@
 
             <div id="time-machine-modal"
                  class="modal hide fade share-weixin-modal time-machine-modal"
-                 tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+                 tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-stats2015-url="http://www.jianshu.com/stats2015">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>

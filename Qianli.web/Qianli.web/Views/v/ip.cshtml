@@ -65,125 +65,163 @@
     }
 }
 
-    <!-- 左栏 -->
 
-    <div class="content" data-spm="1998565201">
 
-        <div class="bread">
 
-            <a href='/v/i'>主页 </a> > @Html.Raw(@iurl) >   @ViewBag.Title
+
+<div class="row-fluid">
+
+    <div class="recommended">
+        <!-- aside -->
+        <div class="span3 left-aside">
+            <div class="cover-img" style="background-image: url(/Content/tt/img/bg.jpg); "></div>           
+
+            <div class="bottom-block">
+
+                <h1>专注</h1>
+                <h3>专注购物体验</h3>             
+                <p class="fa fa-lightbulb-o">
+                    在这里您可以查看所有您喜欢的购物文章推荐。
+                </p>
+               
+            </div>
+         
         </div>
+        <div class="offset3 span7">
+            <div class="page-title">
+                <ul class="unstyled clearfix sort-nav" id="collection-categories-nav" data-js-module="collection-category" data-fetch-url="">
+                    <li>
+                        <a href="/v/i"> 最新头条 </a>
+                    </li>
+                    <li>
+                        <a class="category" href='/v/i/25'> 穿衣搭配 </a>
+                    </li>
+                    <li>
+                        <a class="category" href='/v/i/28'> 数码极客 </a>
+                    </li>
+                    <li>
+                        <a class="category" href='/v/i/29'> 美容护肤 </a>
+                    </li>
+                    <li>
+                        <a class="category" href='/v/i/24'> 家居生活 </a>
+                    </li>
+                    <li>
+                        <a class="category" href='/v/i/26'> 辣妈俏娃 </a>
+                    </li>
+                    <li><a class="category" href='/v/i/27'> 我是吃货 </a></li>
 
-        <div class="detail">
+                    <li><a href='/v/i/10' class="category">最生活</a></li>
 
-            <div class="detail-title">@ViewBag.Title</div>
 
-            <div class="detail-time">@ViewData.Model.showDate</div>
+                    <li><a href='/v/i/13' class="category">特卖库</a></li>
 
-            
-            @Html.Raw(ViewData.Model.content)      
+                    <li><a href='/v/i/18' class="category">健康行</a></li>
 
-@if (ViewData["isdelitem"].ToString() == "False")
-{
-           @Html.Raw(@aliurl)
-}
+                    <li><a href='/v/i/22' class="category">星座</a></li>
+
+                    <li class="search">
+                        <form class="search-form" target="_blank" action="/search" accept-charset="UTF-8" method="get">
+                            <input name="utf8" type="hidden" value="&#x2713;" />
+                            <input type="search" name="q" id="q" placeholder="搜索" class="input-medium search-query" />
+                            <span class="search_trigger" onclick="$('form.search-form').submit();"><i class="fa fa-search"></i></span>
+                        </form>
+                    </li>
+                    <li><img class="hide loader-tiny" src="/Content/tt/images/tiny.gif" alt="Tiny" /></li>
+                </ul>
+
+
+
+            </div>
+            <div class="container">
+                <div class="article">
+                    
+                    <div class="preview">
+                        <div class="author-info">
+                            <div class="bread">
+                                <a href='/v/i'>主页 </a> > @Html.Raw(@iurl) >  <strong> @ViewBag.Title </strong>  
+                            </div>                        
+                            <span data-toggle='tooltip' data-original-title='最后编辑于 @ViewData.Model.showDate'>@ViewData.Model.showDate</span>
+                           
+                        </div>
+                        <h1 class="title">@ViewBag.Title</h1>
+                       
+                        <div class="show-content">
+                            @Html.Raw(ViewData.Model.content)
+
+                            @if (ViewData["isdelitem"].ToString() == "False")
+                            {
+                                @Html.Raw(@aliurl)
+                            }
+                            
+                         </div>
+                        </div>
+
+                    <div class="hot">
+
+                        <div class="hot-title">
+
+                            <div class="hot-title-text">本周热门 </div>
+
+                        </div>
+
+                        <div class="hot-list" data-spm="1998565037">
+
+
+                            @foreach (var t in ViewData["toutiaos"] as List<Qianli.web.Models.v.Toutiao>)
+                            {
+                                //try
+                                //{
+                                if (t.detailUrl.IndexOf("headline.taobao") > 0 || t.detailUrl.IndexOf("uz.taobao") > 0)
+                                {
+
+                                    <a class="item" href="@Html.Raw(@t.detailUrl.Replace("http://headline.taobao.com/feed/feedDetail.htm?id=", "/v/ip/").Replace("http://uz.taobao.com/detail/", "/v/ip/"))?&publishId=@Html.Raw(@t.publishId)&columnid=@Html.Raw(columnId)">
+
+                                        <div class="item-rank rank-second">@i.ToString()</div>
+
+                                        <div class="item-pic"><img src='@Html.Raw(@t.picList.ToString())' /></div>
+
+                                        <div class="item-info">
+
+                                            <div class="item-title">@t.name</div>
+
+                                            <div class="item-desc">@t.description</div>
+
+                                        </div>
+
+                                        <div class="item-status">
+
+                                            <div class="item-view">
+
+                                                <div class="item-status-text">@t.viewNum.ToString()</div>
+
+                                            </div>
+
+                                            <div class="item-up">
+
+                                                <div class="item-status-text">@t.favourCount.ToString() </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </a>
+                                    i = i + 1;
+                                }
+                                //}
+                                //catch { }
+                            }
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
         </div>
-
-        <div class="guide">
-
-            <img src="/Content/toutiao/images/qianliwx2.png">
-
-        </div>
-
     </div>
+</div>
 
-
-
-    <!-- 右边栏 -->
-
-    <div class="sidebar">
-
-        <div class="qrcode">
-
-            <div class="qrcode-pic"> <img src="/Content/toutiao/images/qianliwx.png"> </div>
-
-            <div class="qrcode-info">
-
-                <div class="qrcode-title">千里头条 时刻新鲜</div>
-
-                <div class="qrcode-desc">扫码查看更多头条快讯</div>
-
-            </div>
-
-            <div class="qrcode-line"></div>
-
-        </div>
-
-        <div data-spm="1998565036"> <a href="http://v.qianliweb.com/v/i" style="border: none;" target="_blank" class="recruit"> <img src="/Content/toutiao/images/qianlihz.png"> </a> </div><br>
-
-        <div><a href="#"><img src="/Content/toutiao/images/336-280.gif"></a></div>
-
-        <div class="hot">
-
-            <div class="hot-title">
-
-                <div class="hot-title-text">本周热门 </div>
-
-            </div>
-
-            <div class="hot-list" data-spm="1998565037">
-
-
-@foreach (var t in ViewData["toutiaos"] as List<Qianli.web.Models.v.Toutiao>)
-{
-    //try
-    //{
-    if (t.detailUrl.IndexOf("headline.taobao") > 0 || t.detailUrl.IndexOf("uz.taobao") > 0)
-    {              
-
-    <a class="item" href="@Html.Raw(@t.detailUrl.Replace("http://headline.taobao.com/feed/feedDetail.htm?id=", "/v/ip/").Replace("http://uz.taobao.com/detail/", "/v/ip/"))?&publishId=@Html.Raw(@t.publishId)&columnid=@Html.Raw(columnId)">
-
-        <div class="item-rank rank-second">@i.ToString()</div>
-
-        <div class="item-pic"><img src='@Html.Raw(@t.picList.ToString())' /></div>
-
-        <div class="item-info">
-
-            <div class="item-title">@t.name</div>
-
-            <div class="item-desc">@t.description</div>
-
-        </div>
-
-        <div class="item-status">
-
-            <div class="item-view">
-
-                <div class="item-status-text">@t.viewNum.ToString()</div>
-
-            </div>
-
-            <div class="item-up">
-
-                <div class="item-status-text">@t.favourCount.ToString() </div>
-
-            </div>
-
-        </div>
-
-    </a>
-            i = i + 1;
-        }
-    //}
-    //catch { }
-}
-
-
-            </div>
-
-        </div>
-
-    </div>
 
 @if (ViewData["isdelitem"].ToString() == "False")
 {
