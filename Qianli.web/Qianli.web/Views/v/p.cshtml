@@ -2,7 +2,8 @@
     Layout = "~/Views/Shared/_mallLayout.cshtml";
     ViewBag.Title = "网购VIP头条-千里V商城";
                     //<img src='@Html.Raw(@NTbkItem["picList"][0].ToString())' /> 
-    string url = HttpContext.Current.Request.Path;
+    string curl = HttpContext.Current.Request.Path;
+    
 }
 
 <div class="recommended">
@@ -24,30 +25,29 @@
                     <a href="/v/i"> 最新头条 </a>
                 </li>
                 <li>
-                    <a class="category" href='@Html.Raw(@url)?columnid=25'> 穿衣搭配 </a>
+                    <a class="category" href='@Html.Raw(@curl)?columnid=25'> 穿衣搭配 </a>
                 </li>
                 <li>
-                    <a class="category" href='@Html.Raw(@url)?columnid=28'> 数码极客 </a>
+                    <a class="category" href='@Html.Raw(@curl)?columnid=28'> 数码极客 </a>
                 </li>
                 <li>
-                    <a class="category" href='@Html.Raw(@url)?columnid=29'> 美容护肤 </a>
+                    <a class="category" href='@Html.Raw(@curl)?columnid=29'> 美容护肤 </a>
                 </li>
                 <li>
-                    <a class="category" href='@Html.Raw(@url)?columnid=24'> 家居生活 </a>
+                    <a class="category" href='@Html.Raw(@curl)?columnid=24'> 家居生活 </a>
                 </li>
                 <li>
-                    <a class="category" href='@Html.Raw(@url)?columnid=26'> 辣妈俏娃 </a>
+                    <a class="category" href='@Html.Raw(@curl)?columnid=26'> 辣妈俏娃 </a>
                 </li>
-                <li><a class="category" href='@Html.Raw(@url)?columnid=27'> 我是吃货 </a></li>
+                <li><a class="category" href='@Html.Raw(@curl)?columnid=27'> 我是吃货 </a></li>
 
-                <li><a href='@Html.Raw(@url)?columnid=10' class="category">最生活</a></li>
+                <li><a href='@Html.Raw(@curl)?columnid=10' class="category">最生活</a></li>
 
+                <li><a href='@Html.Raw(@curl)?columnid=13' class="category">特卖库</a></li>
 
-                <li><a href='@Html.Raw(@url)?columnid=13' class="category">特卖库</a></li>
+                <li><a href='@Html.Raw(@curl)?columnid=18' class="category">健康行</a></li>
 
-                <li><a href='@Html.Raw(@url)?columnid=18' class="category">健康行</a></li>
-
-                <li><a href='@Html.Raw(@url)?columnid=22' class="category">星座</a></li>
+                <li><a href='@Html.Raw(@curl)?columnid=22' class="category">星座</a></li>
 
                 <li class="search">
                     <form class="search-form" target="_blank" action="/search" accept-charset="UTF-8" method="get">
@@ -69,7 +69,7 @@
 {
     if (NTbkItem.detailUrl.IndexOf("headline.taobao") > 0 || NTbkItem.detailUrl.IndexOf("uz.taobao") > 0)
     {
-         url = NTbkItem.detailUrl.Replace("http://headline.taobao.com/feed/feedDetail.htm?id=", "/v/ip/").Replace("http://uz.taobao.com/detail/", "/v/ip/") + "?&publishId=" + NTbkItem.publishId + "&columnid=" + NTbkItem.columnId.ToString();
+      string   url = NTbkItem.detailUrl.Replace("http://headline.taobao.com/feed/feedDetail.htm?id=", "/v/ip/").Replace("http://uz.taobao.com/detail/", "/v/ip/") + "?&publishId=" + NTbkItem.publishId + "&columnid=" + NTbkItem.columnId.ToString();
        
                 <li class="have-img">
                     <a class="wrap-img" href="@Html.Raw(@url)"><img src="@Html.Raw(@NTbkItem.picList)" alt="300" /></a>
@@ -89,22 +89,14 @@
 }
               
             </ul>
-            <div class="load-more" style="display:none">
-                <button class="ladda-button "
-                        data-style="slide-left"
-                        data-type="script"
-                        data-remote
-                        data-size="medium"
-                        data-url=""
-                        data-color="maleskine"
-                        data-method="get">
-                    <span class="ladda-label">点击查看更多</span>
-                </button>
+            <div class="load-more" >                
+                <a class="ladda-label" href="@Html.Raw(@curl)?columnid=@ViewData["columnId"]&p=@ViewData["page"]" class="ladda-label">下一页</a> [共 @ViewData["total"] 条记录][ @ViewData["currentPage"] /  @ViewData["totalPage"] 页  ]
+              
             </div>
 
             <div id="time-machine-modal"
                  class="modal hide fade share-weixin-modal time-machine-modal"
-                 tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-stats2015-url="http://www.jianshu.com/stats2015">
+                 tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>

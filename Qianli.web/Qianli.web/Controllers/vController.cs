@@ -36,28 +36,84 @@ namespace Qianli.web.Controllers
             _db = new QianliDataEntities();
         }
         [CompressAttribute]
-        public ActionResult p(string id, string columnid, string subColumn)
-        {
+        public ActionResult p(string id, string columnid, string p)
+        {   
             ViewData["isdelitem"] = isdelitem;
             int columnId = 0;
+            int currentPage = 1;
+            int pageSize = 20;
+            int total = 0; int totalPage = 0;
+            try { currentPage = Convert.ToInt32(p);
+            if (p == null) { currentPage = 1; }
+            }
+            catch
+            {
+                currentPage = 1;
+            } 
             try { columnId = Convert.ToInt32(columnid); }
             catch {
                 columnId = 0;
-            }            
+            }
+            ViewData["columnId"] = columnId.ToString();
+            ViewData["page"] = Convert.ToString(currentPage+1);
+            List<Toutiao> items = new List<Toutiao>();
             if (id == "0") {
-                if (columnId != 0) { ViewData.Model = _db.Toutiao.Where(t => t.content.ToString() != "" && t.columnId == columnId).Take(20).ToList(); }
+                if (columnId != 0) { 
+                    items= _db.Toutiao.Where(t => t.content.ToString() != "" && t.columnId == columnId).ToList();
+                    total = items.Count();
+                    double pageCount = Math.Ceiling((double)total /(double)pageSize);
+                    totalPage =(int)pageCount ;
+                    if (currentPage >= totalPage)
+                    {
+                        currentPage = totalPage;
+                        ViewData["page"] = totalPage;
+                     }
+                    ViewData.Model = items.OrderBy(t => t.Id).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
+                }
                 else
                 {
-                    ViewData.Model = _db.Toutiao.Where(t => t.content.ToString() != "").Take(20).ToList();
+                    items =_db.Toutiao.Where(t => t.content.ToString() != "").ToList();
+                    total = items.Count();
+                    double pageCount = Math.Ceiling((double)total / (double)pageSize);
+                    totalPage = (int)pageCount;
+                    if (currentPage >= totalPage)
+                    {
+                        currentPage = totalPage;
+                        ViewData["page"] = totalPage;
+                    }
+                    ViewData.Model = items.OrderBy(t => t.Id).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
                 }
             }
             else
             {
-                if (columnId != 0) { ViewData.Model = _db.Toutiao.Where(t => t.content.ToString() == "" && t.columnId == columnId).Take(20).ToList(); }
+                if (columnId != 0) {
+                    items = _db.Toutiao.Where(t => t.content.ToString() == "" && t.columnId == columnId).ToList();
+                    total = items.Count();
+                    double pageCount = Math.Ceiling((double)total / (double)pageSize);
+                    totalPage = (int)pageCount;
+                    if (currentPage >= totalPage)
+                    {
+                        currentPage = totalPage;
+                        ViewData["page"] = totalPage;
+                    }
+                    ViewData.Model = items.OrderBy(t => t.Id).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
+                }
                 else
                 {
-                    ViewData.Model = _db.Toutiao.Where(t => t.content.ToString() == "").Take(20).ToList();
+                    items = _db.Toutiao.Where(t => t.content.ToString() == "").ToList();
+                    total = items.Count();
+                    double pageCount = Math.Ceiling((double)total / (double)pageSize);
+                    totalPage = (int)pageCount;
+                    if (currentPage >= totalPage)
+                    {
+                        currentPage = totalPage;
+                        ViewData["page"] = totalPage;
+                    }
+                    ViewData.Model = items.OrderBy(t => t.Id).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
                 }
+                ViewData["total"] = total;
+                ViewData["totalPage"] = totalPage;
+                ViewData["currentPage"] = currentPage;
             }
            // ViewData["columnId"] = id;
             //ViewData["subColumn"] = subColumn;
