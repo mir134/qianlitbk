@@ -67,9 +67,12 @@
             <ul class="article-list thumbnails">
 @foreach (var NTbkItem in ViewData.Model )
 {
+    if (NTbkItem.detailUrl == null) { NTbkItem.detailUrl = ""; }
     if (NTbkItem.detailUrl.IndexOf("headline.taobao") > 0 || NTbkItem.detailUrl.IndexOf("uz.taobao") > 0)
     {
-      string   url = NTbkItem.detailUrl.Replace("http://headline.taobao.com/feed/feedDetail.htm?id=", "/v/ip/").Replace("http://uz.taobao.com/detail/", "/v/ip/") + "?&publishId=" + NTbkItem.publishId + "&columnid=" + NTbkItem.columnId.ToString();
+        if (NTbkItem.publishId == null) { NTbkItem.publishId = ""; }
+        if (NTbkItem.columnId == null) { NTbkItem.columnId = ""; }
+        string url = NTbkItem.detailUrl.Replace("http://headline.taobao.com/feed/feedDetail.htm?id=", "/v/ip/").Replace("http://uz.taobao.com/detail/", "/v/ip/") + "?&publishId=" + NTbkItem.publishId.ToString() + "&columnid=" + NTbkItem.columnId.ToString();
        
                 <li class="have-img">
                     <a class="wrap-img" href="@Html.Raw(@url)"><img src="@Html.Raw(@NTbkItem.picList)" alt="300" /></a>

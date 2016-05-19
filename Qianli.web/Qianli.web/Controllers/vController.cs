@@ -29,7 +29,7 @@ namespace Qianli.web.Controllers
     {
         readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         QianliDataEntities _db; //数据库连接
-        bool isdelitem = false;  //默认删除陶宝连接
+        bool isdelitem = true;  //默认true删除陶宝连接
        
         public vController()
         {
@@ -111,10 +111,11 @@ namespace Qianli.web.Controllers
                     }
                     ViewData.Model = items.OrderBy(t => t.Id).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
                 }
-                ViewData["total"] = total;
-                ViewData["totalPage"] = totalPage;
-                ViewData["currentPage"] = currentPage;
+               
             }
+            ViewData["total"] = total;
+            ViewData["totalPage"] = totalPage;
+            ViewData["currentPage"] = currentPage;
            // ViewData["columnId"] = id;
             //ViewData["subColumn"] = subColumn;
             return View();
@@ -216,6 +217,7 @@ namespace Qianli.web.Controllers
         [OutputCache(CacheProfile = "Aggressive")]
         public ActionResult ip(string id, string publishId, string spm, string columnId)
         {
+            //_db.Database.ExecuteSqlCommand("ALTER TABLE [dbo].[Toutiao] ALTER COLUMN [description] NVARCHAR (500) NULL;");
             ViewData["isdelitem"] = isdelitem;
             ViewData["ID"] = id;
             ViewData["publishId"] = publishId;
@@ -287,9 +289,10 @@ namespace Qianli.web.Controllers
                         }
 
                     }
-
+                    
                     try { _db.SaveChanges(); }
-                    catch (Exception e) { logger.Error(e.Message + " URL:" + Request.Url.ToString() + "columnId:" + toutiaolist.columnId + "|" + columnId); }
+                    catch (Exception e) { logger.Error(e.Message + " URL:" + Request.Url.ToString() + "columnId:|" + columnId);                 
+                    }
                     toutiaos.Add(p);
                    
                 }

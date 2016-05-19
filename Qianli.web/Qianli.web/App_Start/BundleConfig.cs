@@ -39,7 +39,7 @@ namespace Qianli.web
                       // "~/Content/toutiao/js/aplus_v2.js",
                        "~/Content/toutiao/js/index2.js"));
 
-            bundles.Add(new StyleBundle("~/Content/tt/vcss").Include(
+            bundles.Add(new StyleBundle("~/Content/tt/css/v").Include(
                       "~/Content/tt/css/base.css",
                       "~/Content/tt/css/reading.css",
                       "~/Content/tt/css/base-read-mode.css"

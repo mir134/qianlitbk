@@ -9,7 +9,7 @@ CREATE TABLE [dbo].[Toutiao] (
     [feedId]        NVARCHAR (50)  NOT NULL,
     [showWeight]    INT            DEFAULT ((0)) NULL,
     [publishId]     NVARCHAR (50)  NULL,
-    [description]   NVARCHAR (250) NULL,
+    [description]   NVARCHAR (500) NULL,
     [name]          NVARCHAR (150) NOT NULL,
     [bizSourceName] NVARCHAR (50)  NULL,
     [picList]       NVARCHAR (250) NULL,
