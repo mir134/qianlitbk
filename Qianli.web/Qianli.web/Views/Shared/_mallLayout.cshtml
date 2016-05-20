@@ -31,9 +31,11 @@
        string locale = "zh-CH";
        try
        {
-           locale = HttpContext.Current.Request.Cookies["locale"].Value;
-           default_font = HttpContext.Current.Request.Cookies["default_font"].Value;
            read_mode = HttpContext.Current.Request.Cookies["read_mode"].Value;
+           default_font = HttpContext.Current.Request.Cookies["default_font"].Value;
+           locale = HttpContext.Current.Request.Cookies["locale"].Value;
+          
+          
        }
        catch { }
        }
@@ -173,40 +175,52 @@
 
 
     <script>
-        $(function () {
-            // alert(0);
-            $(".dropdown  a").each(function () { //左菜单高亮当前
-                var uid = getQueryString("columnid");
-                if (uid == "0") { uid = "index"; };
-                $this = $(this);
-                // alert($this[0].href);
-                if ($this[0].href == String(window.location)) {
+    $(function () {
+        // alert(0);
+        $(".dropdown  a").each(function () { //左菜单高亮当前
+            var uid = getQueryString("columnid");
+            if (uid == "0") { uid = "index"; };
+            $this = $(this);
+            // alert($this[0].href);
+            if ($this[0].href == String(window.location)) {
 
+                $this.addClass("active");
+
+            }
+
+            if ("@url" == "/v/p") {
+                if (($this[0].href.indexOf(String("@url")) > 1)) {
                     $this.addClass("active");
-
+                    return false;
                 }
-
-                if ("@url" == "/v/p") {
-                    if (($this[0].href.indexOf(String("@url")) > 1)) {
-                        $this.addClass("active");
-                        return false;
-                    }
-                }
-                if ("@url" == "/v/p/0") {
-                    if (($this[0].href.indexOf(String("@url")) > 1)) {
+            }
+            if ("@url" == "/v/p/0") {
+                if (($this[0].href.indexOf(String("@url")) > 1)) {
                         $this.addClass("active");
                     }
                 }
             });
 
-            if ("@read_mode" == "day") {
+            if ($.cookie('read_mode') == "day") {
                 $(".btn-daytime").addClass("active");
-            } else {
-                $(".btn-nighttime").addClass("active");
-            }
+                Maleskine.Utils.setDay();
             
+                } else {
+                        $(".btn-nighttime").addClass("active");
+                        Maleskine.Utils.setNight();
+                }      
+            if ($.cookie('default_font') == "font1") {
+              
+                Maleskine.Utils.setFont1();
 
-        }());
+            } else {
+            
+                Maleskine.Utils.setFont2();
+            }
+       
+            
+       
+    }());
 
     </script>
 
