@@ -1,6 +1,6 @@
 ﻿@{   
     Layout = "~/Views/Shared/_mallLayout.cshtml";
-    ViewBag.Title = "网购VIP头条-千里V商城";
+    ViewBag.Title = ViewBag.Title+"网购VIP头条-千里V商城";
                     //<img src='@Html.Raw(@NTbkItem["picList"][0].ToString())' /> 
     string curl = HttpContext.Current.Request.Path;
     
@@ -56,9 +56,9 @@
                 <li><a href='@Html.Raw(@curl)?columnid=22' class="category">星座</a></li>
 
                 <li class="search">
-                    <form class="search-form" target="_blank" action="/search" accept-charset="UTF-8" method="get">
-                        <input name="utf8" type="hidden" value="&#x2713;" />
-                        <input type="search" name="q" id="q" placeholder="搜索" class="input-medium search-query" />
+                    <form class="search-form" action="/v/p" accept-charset="UTF-8" method="get">
+                        <input name="columnid" type="hidden" value="@ViewData["columnId"]" />
+                        <input type="search" name="q" id="q" placeholder="搜索" class="input-medium search-query" value="@ViewData["q"]" />
                         <span class="search_trigger" onclick="$('form.search-form').submit();"><i class="fa fa-search"></i></span>
                     </form>
                 </li>
@@ -99,7 +99,7 @@
               
             </ul>
             <div class="load-more" >                
-                <a class="ladda-label" href="@Html.Raw(@curl)?columnid=@ViewData["columnId"]&p=@ViewData["page"]" class="ladda-label">下一页</a> [共 @ViewData["total"] 条记录][ @ViewData["currentPage"] /  @ViewData["totalPage"] 页  ]
+                <a class="ladda-label" href="@Html.Raw(@curl)?columnid=@ViewData["columnId"]&p=@ViewData["page"]&q=@ViewData["q"]" >下一页</a> [共 @ViewData["total"] 条记录][ @ViewData["currentPage"] /  @ViewData["totalPage"] 页  ]
               
             </div>
 

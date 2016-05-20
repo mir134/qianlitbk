@@ -36,14 +36,17 @@ namespace Qianli.web.Controllers
             _db = new QianliDataEntities();
         }
         [CompressAttribute]
-        public ActionResult p(string id, string columnid, string p)
+        public ActionResult p(string id, string columnid, string p, string q)
         {   
             ViewData["isdelitem"] = isdelitem;
+            string key ="";
             int columnId = 0;
             int currentPage = 1;
             int pageSize = 20;
             int total = 0; int totalPage = 0;
-            try { currentPage = Convert.ToInt32(p);
+            double pageCount;
+            if (q != null) { key = q; }
+            try { currentPage = Convert.ToInt32(p);                  
             if (p == null) { currentPage = 1; }
             }
             catch
@@ -58,62 +61,38 @@ namespace Qianli.web.Controllers
             ViewData["page"] = Convert.ToString(currentPage+1);
             List<Toutiao> items = new List<Toutiao>();
             if (id == "0") {
-                if (columnId != 0) { 
-                    items= _db.Toutiao.Where(t => t.content.ToString() != "" && t.columnId == columnId).ToList();
-                    total = items.Count();
-                    double pageCount = Math.Ceiling((double)total /(double)pageSize);
-                    totalPage =(int)pageCount ;
-                    if (currentPage >= totalPage)
-                    {
-                        currentPage = totalPage;
-                        ViewData["page"] = totalPage;
-                     }
-                    ViewData.Model = items.OrderBy(t => t.Id).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
+                ViewBag.Title = "往期头条";
+                if (columnId != 0) {
+                    items = _db.Toutiao.Where(t => t.content.ToString() != "" && t.columnId == columnId && t.name.Contains(key)).ToList();                   
                 }
                 else
                 {
-                    items =_db.Toutiao.Where(t => t.content.ToString() != "").ToList();
-                    total = items.Count();
-                    double pageCount = Math.Ceiling((double)total / (double)pageSize);
-                    totalPage = (int)pageCount;
-                    if (currentPage >= totalPage)
-                    {
-                        currentPage = totalPage;
-                        ViewData["page"] = totalPage;
-                    }
-                    ViewData.Model = items.OrderBy(t => t.Id).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
+                    items = _db.Toutiao.Where(t => t.content.ToString() != "" && t.name.Contains(key)).ToList();                   
                 }
             }
             else
             {
+                ViewBag.Title = "热门头条";
                 if (columnId != 0) {
-                    items = _db.Toutiao.Where(t => t.content.ToString() == "" && t.columnId == columnId).ToList();
-                    total = items.Count();
-                    double pageCount = Math.Ceiling((double)total / (double)pageSize);
-                    totalPage = (int)pageCount;
-                    if (currentPage >= totalPage)
-                    {
-                        currentPage = totalPage;
-                        ViewData["page"] = totalPage;
-                    }
-                    ViewData.Model = items.OrderBy(t => t.Id).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
+                    items = _db.Toutiao.Where(t => t.content.ToString() == "" && t.columnId == columnId && t.name.Contains(key) ).ToList();                   
                 }
                 else
                 {
-                    items = _db.Toutiao.Where(t => t.content.ToString() == "").ToList();
-                    total = items.Count();
-                    double pageCount = Math.Ceiling((double)total / (double)pageSize);
-                    totalPage = (int)pageCount;
-                    if (currentPage >= totalPage)
-                    {
-                        currentPage = totalPage;
-                        ViewData["page"] = totalPage;
-                    }
-                    ViewData.Model = items.OrderBy(t => t.Id).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
-                }
+                    items = _db.Toutiao.Where(t => t.content.ToString() == "" && t.name.Contains(key)).ToList();                    
+                }               
                
             }
+            total = items.Count();
+            pageCount = Math.Ceiling((double)total / (double)pageSize);
+            totalPage = (int)pageCount;
+            if (currentPage >= totalPage)
+            {
+                currentPage = totalPage;
+                ViewData["page"] = totalPage;
+            }
+            ViewData.Model = items.OrderBy(t => t.Id).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
             ViewData["total"] = total;
+            ViewData["q"] = q;
             ViewData["totalPage"] = totalPage;
             ViewData["currentPage"] = currentPage;
            // ViewData["columnId"] = id;
