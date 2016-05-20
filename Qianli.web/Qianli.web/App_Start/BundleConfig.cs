@@ -42,11 +42,13 @@ namespace Qianli.web
             bundles.Add(new StyleBundle("~/Content/tt/css/v").Include(
                       "~/Content/tt/css/base.css",
                       "~/Content/tt/css/reading.css",
-                      "~/Content/tt/css/base-read-mode.css"
+                      "~/Content/tt/css/base-read-mode.css",
+                      "~/Content/tt/css/animate.min.css"
                       ));
             bundles.Add(new ScriptBundle("~/bundles/base").Include(
                       "~/Content/tt/js/base.js",
-                   "~/Content/tt/js/reading-base.js"));
+                   "~/Content/tt/js/reading-base.js",
+                    "~/Content/tt/js/home.js"));
         }
     }
 }

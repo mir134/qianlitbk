@@ -26,10 +26,20 @@
 
 
     @{ string url = HttpContext.Current.Request.Path;
-      }
+       string read_mode = "day";
+       string default_font = "font1";
+       string locale = "zh-CH";
+       try
+       {
+           locale = HttpContext.Current.Request.Cookies["locale"].Value;
+           default_font = HttpContext.Current.Request.Cookies["default_font"].Value;
+           read_mode = HttpContext.Current.Request.Cookies["read_mode"].Value;
+       }
+       catch { }
+       }
     
 </head>
-<body class="output fluid zh cn win mozilla reader-day-mode reader-font2" data-js-module="recommendation" data-locale="zh-CN">
+<body class="output fluid @locale.Replace("-"," ").ToLower() win mozilla reader-@read_mode-mode reader-@default_font" data-js-module="recommendation" data-locale="@locale">
 
     <div class="navbar navbar-jianshu shrink">
         <div class="dropdown">
@@ -139,7 +149,7 @@
 
     <div id="view-mode-modal" tabindex="-1" class="modal hide read-modal" aria-hidden="false" data-js-module='view-mode-modal'>
         <div class="btn-group change-background" data-toggle="buttons-radio">
-            <a class="btn btn-daytime active" data-mode="day" href="javascript:void(null);">
+            <a class="btn btn-daytime " data-mode="day" href="javascript:void(null);">
                 <i class="fa fa-sun-o"></i>
             </a>      <a class="btn btn-nighttime " data-mode="night" href="javascript:void(null);">
                 <i class="fa fa-moon-o"></i>
@@ -158,46 +168,48 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     @Scripts.Render("~/bundles/base")
+
+
+
     <script>
-        function getQueryString(name) {
-            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-            var r = window.location.search.substr(1).match(reg);
-            if (r != null) return unescape(r[2]); return null;
-        }
+        $(function () {
+            // alert(0);
+            $(".dropdown  a").each(function () { //左菜单高亮当前
+                var uid = getQueryString("columnid");
+                if (uid == "0") { uid = "index"; };
+                $this = $(this);
+                // alert($this[0].href);
+                if ($this[0].href == String(window.location)) {
 
-        $(".dropdown  a").each(function () {
-            var uid = getQueryString("columnid");
-
-            if (uid == "0") { uid = "index"; };
-            $this = $(this);
-            // alert($this[0].href);
-            if ($this[0].href == String(window.location)) {
-
-                $this.addClass("active");
-
-            }
-
-            if ("@url" == "/v/p") {
-                if (($this[0].href.indexOf(String("@url")) > 1)) {
                     $this.addClass("active");
-                    return false;
+
                 }
-            }
-            if ("@url" == "/v/p/0") {
-                if (($this[0].href.indexOf(String("@url")) > 1)) {
-                    $this.addClass("active");
+
+                if ("@url" == "/v/p") {
+                    if (($this[0].href.indexOf(String("@url")) > 1)) {
+                        $this.addClass("active");
+                        return false;
+                    }
                 }
+                if ("@url" == "/v/p/0") {
+                    if (($this[0].href.indexOf(String("@url")) > 1)) {
+                        $this.addClass("active");
+                    }
+                }
+            });
+
+            if ("@read_mode" == "day") {
+                $(".btn-daytime").addClass("active");
+            } else {
+                $(".btn-nighttime").addClass("active");
             }
+            
 
+        }());
 
-
-
-        });
     </script>
 
 
-
-
-
 </body>
+
 </html>

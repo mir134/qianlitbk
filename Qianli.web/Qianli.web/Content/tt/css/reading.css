@@ -919,6 +919,9 @@ content:"\f058"
 .row-fluid .recommended .page-title {
 position:static
 }
+.container .article {
+    padding: 10px 40px 10px;
+}
 .row-fluid .recommended .sort-nav {
 padding-left:10px;
 margin-top:0
